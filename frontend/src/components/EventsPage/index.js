@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './EventsPage.css';
 import * as eventActions from '../../store/event'
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 
 export default function EventsPage() {
@@ -21,18 +22,19 @@ export default function EventsPage() {
                 <ul>
                     Users Events
                     {userEvents?.map(element =>
-                        <div>
+                        <NavLink key={element.id} to={`/event/${element.id}`}>
+                            {console.log(element.id)}
                             <p>-----------------------------------</p>
-                            <li key={element.id}>{element.startDate}</li>
-                            <li key={element.id}>{element.title}</li>
-                            <li key={element.id}>{element.ticketsCapacity}</li>
-                            <li key={element.id}>{element.price}</li>
+                            <li key={element.startDate}>{element.startDate}</li>
+                            <li key={element.title}>{element.title}</li>
+                            <li key={element.ticketsCapacity}>{element.ticketsCapacity}</li>
+                            <li key={element.price}>{element.price}</li>
                             {/* <img src={element.imageURL} alt="" /> */}
-                        </div>
+                        </NavLink>
                         // console.log(element.title);
                     )}
                 </ul>
             </div>
-        </div>
+        </div >
     );
 };
