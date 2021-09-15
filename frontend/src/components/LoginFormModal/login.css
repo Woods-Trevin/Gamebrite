@@ -1,0 +1,19 @@
+.loginbtn-container {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    left: 94%;
+}
+
+
+.loginbtn {
+    position: absolute;
+   border-radius: 15px;
+   background-color: white;
+   border: 2px solid white;
+   width: 70px;
+   height: 43px;
+   right: 50%;
+   /* top: px; */
+   bottom: 30%;
+}
