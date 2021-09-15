@@ -9,6 +9,8 @@ import { useEventContext } from "./context/event"
 import BasicInfoPage from "./components/BasicInfoPage";
 import EventsPage from "./components/EventsPage";
 import EventsPageNavigation from "./components/EventsPageNavigation";
+import EventPageNavigation from "./components/EventPageNavigation";
+import SingleEventPage from "./components/SingleEventPage";
 
 
 // Retain the session user information across a refresh by loading the
@@ -45,8 +47,8 @@ function App() {
           <EventsPage />
         </Route>
         <Route path="/event/:eventId">
-          <EventsPageNavigation />
-          <EventsPage />
+          <EventPageNavigation />
+          <SingleEventPage />
         </Route>
       </Switch>
 
