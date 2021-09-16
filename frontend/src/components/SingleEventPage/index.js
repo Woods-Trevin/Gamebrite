@@ -19,12 +19,27 @@ function SingleEventPage() {
     const currentEvent = userEvents?.find(event => event.id === ID);
     // console.log("This is the currentEvent---->", currentEvent);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         // console.log("render")
         dispatch(eventActions.getEvents())
     }, []);
 
+
+    function handleDeletionOfEvents(e) {
+        e.preventDefault();
+
+
+        dispatch(eventActions.deleteEvents(ID))
+        history.push("/events")
+    }
+
+    // function handleDeletionOfEvents(e) {
+    //     e.preventDefault();
+    //     const payload = { id: ID }
+    //     // dispatch(eventActions.deleteEvents(payload)
+    // }
 
     return (
         <div>
@@ -44,7 +59,7 @@ function SingleEventPage() {
             </div>
             <div>
                 <div>
-                    <button type="button" name="deletebutton" value={"Delete"} >DELETE</button>
+                    <button type="button" name="deletebutton" value={"Delete"} onClick={handleDeletionOfEvents} >DELETE</button>
                 </div>
             </div>
         </div>

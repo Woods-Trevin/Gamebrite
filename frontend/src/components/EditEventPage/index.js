@@ -45,6 +45,7 @@ function EditEventPage() {
 
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         // console.log("render")
@@ -81,36 +82,36 @@ function EditEventPage() {
             onlineEventUrl,
             categoryId: categoryIdAsInt,
         }
-        const formArray = [
-            ID,
-            imageURL,
-            title,
-            gameName,
-            organizer,
-            description,
-            gameType,
-            startDate,
-            endDate,
-            ticketsCapacity,
-            priceAsInt,
-            startTime,
-            endTime,
-            onlineEventUrl,
-            categoryId,
-        ]
-        const payloadArr = formArray.filter(field => field !== null && field !== '')
+        // const formArray = [
+        //     ID,
+        //     imageURL,
+        //     title,
+        //     gameName,
+        //     organizer,
+        //     description,
+        //     gameType,
+        //     startDate,
+        //     endDate,
+        //     ticketsCapacity,
+        //     priceAsInt,
+        //     startTime,
+        //     endTime,
+        //     onlineEventUrl,
+        //     categoryId,
+        // ]
+        // const payloadArr = formArray.filter(field => field !== null && field !== '')
 
-        console.log(payloadArr)
-
-
-        // dispatch(eventActions.updateEvent(payload))
-        //     .catch(async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setFormSubmissionErrors(data.errors);
-        //     });
+        // console.log(payloadArr)
 
 
-        // history.push("/")
+        dispatch(eventActions.updateEvent(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setFormSubmissionErrors(data.errors);
+            });
+
+
+        history.push(`/events`)
 
     }
 
