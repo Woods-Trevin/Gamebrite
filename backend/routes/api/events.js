@@ -18,7 +18,7 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
     const events = await Event.findAll({
         hostId: req.user.id
     });
-    console.log(req.user.id)
+    // console.log(req.user.id)
     // console.log("(inside GET route)event ID: ", eventId)
     // console.log("(inside GET route)venue ID: ", venueId)
     res.json(events);
@@ -70,8 +70,37 @@ router.post('/', restoreUser, asyncHandler(async (req, res, next) => {
         })
 
     } catch (e) {
-        console.log(e);
+        // console.log(e);
     }
+}));
+
+router.put('/', restoreUser, asyncHandler(async (req, res, next) => {
+    const event = await Event.findAll({
+        hostId: req.user.id
+    });
+
+    const { ID } = req.body;
+    const eventId = ID;
+    delete req.body.ID;
+
+    try {
+        const updatedEvent = await Event.update(req.body,
+            {
+                where: { id: ID }
+            }
+        )
+        return res.json({ updatedEvent });
+    } catch (err) {
+        // console.log(err);
+    }
+}));
+
+router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
+    await Event.destroy(
+        {
+            where: { id: req.params.id }
+        }
+    )
 }));
 
 

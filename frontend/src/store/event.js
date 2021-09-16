@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const GET_EVENTS = '/event/getEvents';
 const SET_EVENT = '/event/createEvent';
 const UPDATE_EVENT = '/event/updateEvent';
+const DELETED_EVENT = '/event/deletedEvent'
 
 export const eventsList = (events) => {
     return {
@@ -10,6 +11,8 @@ export const eventsList = (events) => {
         payload: events
     }
 }
+
+
 
 export const setEvent = (event) => {
     return {
@@ -25,6 +28,13 @@ export const updateEventInStore = (newEvent) => {
     }
 }
 
+export const deletedEvent = (event) => {
+    return {
+        type: DELETED_EVENT,
+        payload: event
+    }
+}
+
 export const updateEvent = (body) => async (dispatch) => {
     const response = await csrfFetch("/api/events", {
         method: "PUT",
@@ -36,8 +46,8 @@ export const updateEvent = (body) => async (dispatch) => {
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log("Created this event just now ----> ", responseData)
-        dispatch(updateEventInStore(responseData.event));
+        // console.log("Created this event just now ----> ", responseData)
+        dispatch(updateEventInStore(responseData.updatedEvent));
         return response;
 
     }
@@ -53,6 +63,18 @@ export const getEvents = () => async (dispatch) => {
     }
 };
 
+export const deleteEvents = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/events/${id}`, {
+        method: "DELETE",
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deletedEvent(data));
+    }
+};
+
 export const createEvent = (body) => async (dispatch) => {
     const response = await csrfFetch("/api/events", {
         method: "POST",
@@ -62,7 +84,7 @@ export const createEvent = (body) => async (dispatch) => {
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log("Created this event just now ----> ", responseData)
+        // console.log("Created this event just now ----> ", responseData)
         dispatch(setEvent(responseData.event));
         return response;
 
@@ -75,10 +97,14 @@ const eventReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_EVENTS:
-        // newState = Object.assign({}, state);
-        // newState.events = action.payload;
-        // return newState;
+            newState = Object.assign({}, state);
+            newState.events = action.payload;
+            return newState;
         case SET_EVENT:
+            newState = Object.assign({}, state);
+            newState.events = action.payload;
+            return newState;
+        case DELETED_EVENT:
             newState = Object.assign({}, state);
             newState.events = action.payload;
             return newState;

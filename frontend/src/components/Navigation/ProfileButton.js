@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
                 <ul className="profile-dropdown">
                     <li>{user.username}</li>
                     <li>{user.email}</li>
-                    <li><NavLink to={`/events`}>Events</NavLink></li>
+                    <li><NavLink to={`/events`}>My Events</NavLink></li>
                     <li>
                         <button onClick={logout}>Log Out</button>
                     </li>

@@ -26,8 +26,8 @@ export const createVenue = (body) => async (dispatch) => {
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log("Created this venue just now ----> ", responseData)
-        dispatch(currentVenue(responseData.venue));
+        // console.log("Created this venue just now ----> ", responseData)
+        dispatch(addVenue(responseData.venue));
         return response
     }
 }
@@ -41,7 +41,7 @@ export const updateVenue = (body) => async (dispatch) => {
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log("Created this venue just now ----> ", responseData)
+        // console.log("Created this venue just now ----> ", responseData)
         dispatch(newVenue(responseData.venue));
         return response
     }

@@ -10,16 +10,17 @@ function EditEventPage() {
     const userEvents = useSelector(state => state.events.events);
     const ID = parseInt(eventId)
     const currentEvent = userEvents?.find(event => event.id === ID);
-    console.log("This is the currentEvent---->", currentEvent);
-    const venueId = currentEvent.venueId
+    // console.log("This is the currentEvent---->", currentEvent);
+    const venueId = currentEvent?.venueId
+    // console.log(venueId)
 
-    const [imageURL, setImageURL] = useState("");
-    const [title, setTitle] = useState("");
-    const [organizer, setOrganizer] = useState("");
-    const [gameName, setGameName] = useState("");
-    const [gameType, setGameType] = useState("");
-    const [categoryId, setCategoryId] = useState("");
-    const [description, setDescription] = useState("");
+    const [imageURL, setImageURL] = useState(currentEvent?.imageURL);
+    const [title, setTitle] = useState(currentEvent?.title);
+    const [organizer, setOrganizer] = useState(currentEvent?.organizer);
+    const [gameName, setGameName] = useState(currentEvent?.game);
+    const [gameType, setGameType] = useState(currentEvent?.gameType);
+    const [categoryId, setCategoryId] = useState(currentEvent?.categoryId);
+    const [description, setDescription] = useState(currentEvent?.description);
 
     const [venue, setVenue] = useState(false);
     const [onlineEvent, setOnlineEvent] = useState(false);
@@ -32,30 +33,33 @@ function EditEventPage() {
     const [venueZipcode, setVenueZipcode] = useState("");
     const [onlineEventUrl, setOnlineEventUrl] = useState("");
 
-    const [ticketPrice, setTicketPrice] = useState(0);
-    const [ticketsCapacity, setTicketsCapacity] = useState(0);
+    const [ticketPrice, setTicketPrice] = useState(currentEvent?.price);
+    const [ticketsCapacity, setTicketsCapacity] = useState(currentEvent?.ticketsCapacity);
 
-    const [startDate, setStartDate] = useState("");
-    const [startTime, setStartTime] = useState("");
-    const [endDate, setEndDate] = useState("");
-    const [endTime, setEndTime] = useState("");
+    const [startDate, setStartDate] = useState(currentEvent?.startDate);
+    const [startTime, setStartTime] = useState(currentEvent?.startTime);
+    const [endDate, setEndDate] = useState(currentEvent?.endDate);
+    const [endTime, setEndTime] = useState(currentEvent?.endTime);
 
     const [formSubmissionErrors, setFormSubmissionErrors] = useState([]);
 
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
-        console.log("render")
+        // console.log("render")
         dispatch(eventActions.getEvents())
-        dispatch(venueActions.getVenue())
+        // dispatch(venueActions.getVenue())
     }, []);
+
+    // console.log(imageURL, title, organizer, gameName, gameType, categoryId, description, ticketPrice, ticketsCapacity, startDate, startTime, endDate, endTime)
 
 
     const handleBasicInfoSubmit = (e) => {
         e.preventDefault();
 
-        if (onlineEventUrl === undefined || onlineEventUrl === null) onlineEventUrl = "No Online Event Url"
+        if (onlineEventUrl === undefined || onlineEventUrl === null || onlineEventUrl === ' ') onlineEventUrl = "No Online Event Url"
 
         const ticketsCapacityAsInt = parseInt(ticketsCapacity);
         const priceAsInt = parseInt(ticketPrice);
@@ -77,8 +81,29 @@ function EditEventPage() {
             endTime,
             onlineEventUrl,
             categoryId: categoryIdAsInt,
-
         }
+        // const formArray = [
+        //     ID,
+        //     imageURL,
+        //     title,
+        //     gameName,
+        //     organizer,
+        //     description,
+        //     gameType,
+        //     startDate,
+        //     endDate,
+        //     ticketsCapacity,
+        //     priceAsInt,
+        //     startTime,
+        //     endTime,
+        //     onlineEventUrl,
+        //     categoryId,
+        // ]
+        // const payloadArr = formArray.filter(field => field !== null && field !== '')
+
+        // console.log(payloadArr)
+
+
         dispatch(eventActions.updateEvent(payload))
             .catch(async (res) => {
                 const data = await res.json();
@@ -86,21 +111,21 @@ function EditEventPage() {
             });
 
 
-        // history.push("/")
+        history.push(`/events`)
 
     }
 
     function handleVenueFormSubmit(e) {
         e.preventDefault();
         const payload = {
-
+            venueId,
             name: venueName,
             address: venueAddress,
             city: venueCity,
             state: venueState,
             zipcode: venueZipcode
         }
-        dispatch(venueActions.createVenue(payload))
+        dispatch(venueActions.updateVenue(payload))
 
     }
 
@@ -200,6 +225,17 @@ function EditEventPage() {
         )
     }
 
+    // function checkValue(item) {
+    //     if (item === '' || item === null || item === undefined) {
+    //         item = currentEvent?.item;
+    //         // console.log(item)
+    //         return item;
+    //     } else {
+    //         item = '';
+    //         // console.log(item)
+    //         return item;
+    //     }
+    // }
 
     return (
         <div>
@@ -247,9 +283,9 @@ function EditEventPage() {
                                 <label>
                                     Choose Event Image:
                                     <div className="eventImg">
-                                        <img src={currentEvent?.imageURL} alt="No Image found" />
+                                        <img src={imageURL} alt="No Image found" />
                                     </div>
-                                    <select name="eventImg" value={currentEvent?.imageURL} onChange={(e) => setImageURL(e.target.value)} >
+                                    <select name="eventImg" value={imageURL} onChange={(e) => setImageURL(e.target.value)} >
                                         <option value="https://s3.envato.com/files/78652366/Image%20Preview.jpg">Strategy option 1</option>
                                         <option value="https://miro.medium.com/max/1200/1*cVaERjbYJql7KFb1ZO20Lw.jpeg">Strategy option 2</option>
                                         <option value="https://i.ytimg.com/vi/ZX0hlrmgDcU/maxresdefault.jpg">Strategy option 3</option>
@@ -288,7 +324,7 @@ function EditEventPage() {
                                     <input
                                         type="text"
                                         name="title"
-                                        value={currentEvent?.title}
+                                        value={title}
                                         placeholder="Event Title"
                                         className="basicInfo title"
                                         onChange={(e) => setTitle(e.target.value)}
@@ -300,7 +336,7 @@ function EditEventPage() {
                                     <input
                                         type="text"
                                         name="organizer"
-                                        value={currentEvent?.organizer}
+                                        value={organizer}
                                         placeholder="Organizer"
                                         className="basicInfo organizer"
                                         onChange={(e) => setOrganizer(e.target.value)}
@@ -312,7 +348,7 @@ function EditEventPage() {
                                     <input
                                         type="text"
                                         name="gameName"
-                                        value={currentEvent?.game}
+                                        value={gameName}
                                         placeholder="Game Name"
                                         className="gameName-input"
                                         onChange={(e) => setGameName(e.target.value)}
@@ -321,21 +357,24 @@ function EditEventPage() {
                             </div>
                             <div>
                                 <label>
+
                                     <textarea
                                         name="description"
-                                        value={currentEvent?.description}
+                                        value={description}
                                         rows="8"
                                         cols="50"
                                         placeholder="Description"
                                         className="description"
-                                        onChange={(e) => setDescription(e.target.value)}
+                                        onChange={(e) => {
+                                            setDescription(e.target.value)
+                                        }}
                                     />
                                 </label>
                             </div>
                             <div>
                                 <label>
                                     Choose Game Type:
-                                    <select name="gameType" value={currentEvent?.gameType} onChange={(e) => setGameType(e.target.value)} >
+                                    <select name="gameType" value={gameType} onChange={(e) => setGameType(e.target.value)} >
                                         <option value="Strategy">Strategy</option>
                                         <option value="MOBA">MOBA</option>
                                         <option value="MMO">MMO</option>
@@ -350,7 +389,7 @@ function EditEventPage() {
                             <div>
                                 <label>
                                     Choose Category:
-                                    <select name="category" value={currentEvent?.categoryId} onChange={(e) => setCategoryId(e.target.value)} >
+                                    <select name="category" value={categoryId} onChange={(e) => setCategoryId(e.target.value)} >
                                         <option value={1}>Tournament</option>
                                         <option value={2}>LAN</option>
                                         <option value={3}>Casual</option>
@@ -369,7 +408,7 @@ function EditEventPage() {
                                     <input
                                         type="number"
                                         name="ticketPrice"
-                                        value={currentEvent?.price}
+                                        value={ticketPrice}
                                         onChange={(e) => setTicketPrice(e.target.value)} />
                                 </label>
                             </div>
@@ -378,7 +417,7 @@ function EditEventPage() {
                                     <input
                                         type="number"
                                         name="ticketsCapacity"
-                                        value={currentEvent?.ticketsCapacity}
+                                        value={ticketsCapacity}
                                         onChange={(e) => setTicketsCapacity(e.target.value)} />
                                 </label>
                             </div>
@@ -392,22 +431,22 @@ function EditEventPage() {
                                 <div className="startdatetime-inputs">
                                     <label>
                                         Event Start Date:
-                                        <input type="date" name="startDate" value={currentEvent?.startDate} onChange={(e) => setStartDate(e.target.value)} />
+                                        <input type="date" name="startDate" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                                     </label>
                                     <label>
                                         Event Start Time:
-                                        <input type="time" name="startTime" value={currentEvent?.startTime} onChange={(e) => setStartTime(e.target.value)} />
+                                        <input type="time" name="startTime" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
                                     </label>
 
                                 </div>
                                 <div className="enddatetime-inputs">
                                     <label>
                                         Event End Date:
-                                        <input type="date" name="endDate" value={currentEvent?.endDate} onChange={(e) => setEndDate(e.target.value)} />
+                                        <input type="date" name="endDate" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
                                     </label>
                                     <label>
                                         Event End Time:
-                                        <input type="time" name="endTime" value={currentEvent?.endTime} onChange={(e) => setEndTime(e.target.value)} />
+                                        <input type="time" name="endTime" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
                                     </label>
                                 </div>
                             </div>
