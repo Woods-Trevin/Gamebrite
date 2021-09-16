@@ -56,9 +56,6 @@ function App() {
           <EditEventPage />
         </Route>
       </Switch>
-
-
-
     </>
   );
 }
