@@ -11,6 +11,7 @@ import EventsPage from "./components/EventsPage";
 import EventsPageNavigation from "./components/EventsPageNavigation";
 import EventPageNavigation from "./components/EventPageNavigation";
 import SingleEventPage from "./components/SingleEventPage";
+import EditEventPage from "./components/EditEventPage";
 
 
 // Retain the session user information across a refresh by loading the
@@ -46,11 +47,17 @@ function App() {
           <EventsPageNavigation />
           <EventsPage />
         </Route>
-        <Route path="/event/:eventId">
+        <Route exact path="/event/:eventId">
           <EventPageNavigation />
           <SingleEventPage />
         </Route>
+        <Route path="/event/:eventId/edit">
+          <EventPageNavigation />
+          <EditEventPage />
+        </Route>
       </Switch>
+
+
 
     </>
   );
