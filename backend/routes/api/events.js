@@ -95,6 +95,14 @@ router.put('/', restoreUser, asyncHandler(async (req, res, next) => {
     }
 }));
 
+router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
+    await Event.destroy(
+        {
+            where: { id: req.params.id }
+        }
+    )
+}));
+
 
 
 
