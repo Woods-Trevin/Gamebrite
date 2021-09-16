@@ -15,9 +15,19 @@ const { Event, Venue } = require('../../db/models');
 const router = express.Router();
 
 router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
-    const events = await Event.findAll({
+    const event = await Event.findAll({
         hostId: req.user.id
     });
+
+    // console.log(req.user.id)
+    // console.log("(inside GET route)event ID: ", eventId)
+    // console.log("(inside GET route)venue ID: ", venueId)
+    res.json(event);
+}))
+
+router.get('/allEvents', restoreUser, asyncHandler(async (req, res, next) => {
+    const events = await Event.findAll();
+
     // console.log(req.user.id)
     // console.log("(inside GET route)event ID: ", eventId)
     // console.log("(inside GET route)venue ID: ", venueId)
