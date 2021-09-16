@@ -44,6 +44,11 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        type: 'Charity',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ], {});
   },
 

@@ -201,12 +201,6 @@ export default function BasicInfoPage() {
 
     }
 
-    // useEffect(() => {
-    //     return {
-
-    //     }
-    // }, [])
-
     return (
         <div>
             {<h1>Basic Info Page</h1>}
