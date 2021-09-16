@@ -14,7 +14,8 @@ const { Event, Venue } = require('../../db/models');
 
 const router = express.Router();
 
-router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
+router.put('/', restoreUser, asyncHandler(async (req, res, next) => {
+
 }))
 
 
@@ -40,7 +41,7 @@ router.post('/', restoreUser, asyncHandler(async (req, res, next) => {
             venue
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
     }
 
 }));
