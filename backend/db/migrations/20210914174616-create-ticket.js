@@ -22,6 +22,10 @@ module.exports = {
           model: "Users"
         }
       },
+      free: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -201,12 +201,6 @@ export default function BasicInfoPage() {
 
     }
 
-    // useEffect(() => {
-    //     return {
-
-    //     }
-    // }, [])
-
     return (
         <div>
             {<h1>Basic Info Page</h1>}
@@ -362,6 +356,8 @@ export default function BasicInfoPage() {
                                         <option value={5}>LFG</option>
                                         <option value={6}>Raid</option>
                                         <option value={7}>TeamUp</option>
+                                        <option value={8}>Charity</option>
+                                        
                                     </select>
                                 </label>
                             </div>
