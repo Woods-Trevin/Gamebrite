@@ -36,8 +36,8 @@ export const updateEvent = (body) => async (dispatch) => {
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log("Created this event just now ----> ", responseData)
-        dispatch(updateEventInStore(responseData.event));
+        // console.log("Created this event just now ----> ", responseData)
+        dispatch(updateEventInStore(responseData.updatedEvent));
         return response;
 
     }
@@ -62,7 +62,7 @@ export const createEvent = (body) => async (dispatch) => {
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log("Created this event just now ----> ", responseData)
+        // console.log("Created this event just now ----> ", responseData)
         dispatch(setEvent(responseData.event));
         return response;
 

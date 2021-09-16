@@ -8,7 +8,7 @@ import { useEventContext } from '../../context/event'
 
 export default function EventsPage() {
     const userEvents = useSelector(state => state.events.events);
-    console.log(userEvents);
+    // console.log(userEvents);
     const dispatch = useDispatch();
     // const {
     //     eventId,
@@ -27,7 +27,7 @@ export default function EventsPage() {
 
 
     useEffect(() => {
-        console.log("render")
+        // console.log("render")
         dispatch(eventActions.getEvents())
     }, []);
 
@@ -36,7 +36,7 @@ export default function EventsPage() {
         <div className="createEvent-container">
             <div className="createEvent">
                 <h1>
-                    Create Event Page
+                    My Events Page
                 </h1>
                 <ul>
                     Users Events

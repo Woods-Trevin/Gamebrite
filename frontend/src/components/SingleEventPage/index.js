@@ -17,11 +17,11 @@ function SingleEventPage() {
     // console.log(userEvents);
 
     const currentEvent = userEvents?.find(event => event.id === ID);
-    console.log("This is the currentEvent---->", currentEvent);
+    // console.log("This is the currentEvent---->", currentEvent);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("render")
+        // console.log("render")
         dispatch(eventActions.getEvents())
     }, []);
 
