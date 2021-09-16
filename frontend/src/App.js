@@ -47,7 +47,7 @@ function App() {
           <EventsPageNavigation />
           <EventsPage />
         </Route>
-        <Route path="/event/:eventId">
+        <Route exact path="/event/:eventId">
           <EventPageNavigation />
           <SingleEventPage />
         </Route>
