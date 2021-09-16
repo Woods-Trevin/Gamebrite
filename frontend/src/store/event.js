@@ -4,6 +4,8 @@ const GET_EVENTS = '/event/getEvents';
 const SET_EVENT = '/event/createEvent';
 const UPDATE_EVENT = '/event/updateEvent';
 const DELETED_EVENT = '/event/deletedEvent'
+const ALL_EVENTS = '/event/allEvents'
+
 
 export const eventsList = (events) => {
     return {
@@ -35,6 +37,13 @@ export const deletedEvent = (event) => {
     }
 }
 
+export const allEvents = (event) => {
+    return {
+        type: ALL_EVENTS,
+        payload: event
+    }
+}
+
 export const updateEvent = (body) => async (dispatch) => {
     const response = await csrfFetch("/api/events", {
         method: "PUT",
@@ -60,6 +69,15 @@ export const getEvents = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(eventsList(data));
+    }
+};
+
+export const getAllEvents = () => async (dispatch) => {
+    const response = await csrfFetch("/api/events/allEvents");
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(allEvents(data));
     }
 };
 
@@ -105,6 +123,10 @@ const eventReducer = (state = initialState, action) => {
             newState.events = action.payload;
             return newState;
         case DELETED_EVENT:
+            newState = Object.assign({}, state);
+            newState.events = action.payload;
+            return newState;
+        case ALL_EVENTS:
             newState = Object.assign({}, state);
             newState.events = action.payload;
             return newState;

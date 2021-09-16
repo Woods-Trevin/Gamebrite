@@ -12,6 +12,8 @@ import EventsPageNavigation from "./components/EventsPageNavigation";
 import EventPageNavigation from "./components/EventPageNavigation";
 import SingleEventPage from "./components/SingleEventPage";
 import EditEventPage from "./components/EditEventPage";
+import BrowseEventsPage from "./components/BrowseEventsPage";
+import EventDisplayPage from "./components/EventDisplayPage";
 
 
 // Retain the session user information across a refresh by loading the
@@ -36,9 +38,13 @@ function App() {
               <SignupFormPage />
             </Route>
           )}
+          <BrowseEventsPage />
         </Route>
         <Route path="/signup">
           <SignupFormPage />
+        </Route>
+        <Route path="/browse/:eventId">
+          <EventDisplayPage />
         </Route>
         <Route path="/event/basicInfo">
           <BasicInfoPage />
