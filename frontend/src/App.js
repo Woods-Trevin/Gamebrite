@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import { useEventContext } from "./context/event"
+// import { useEventContext } from "./context/event"
 import BasicInfoPage from "./components/BasicInfoPage";
 import EventsPage from "./components/EventsPage";
 import EventsPageNavigation from "./components/EventsPageNavigation";
@@ -26,7 +26,7 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const { eventId } = useEventContext();
+  // const { eventId } = useEventContext();
 
   return (
     <>

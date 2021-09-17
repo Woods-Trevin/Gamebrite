@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './BrowseEventsPage.css';
 import * as eventActions from '../../store/event'
-import * as venueActions from '../../store/venue'
+// import * as venueActions from '../../store/venue'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
@@ -114,7 +114,7 @@ function BrowseEventsPage() {
     useEffect(() => {
         dispatch(eventActions.getAllEvents());
 
-    }, [tournament, LAN, casual, competitive, LFG, raid, teamUp, charity])
+    }, [tournament, LAN, casual, competitive, LFG, raid, teamUp, charity, dispatch])
 
 
     return (

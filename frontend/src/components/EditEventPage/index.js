@@ -31,7 +31,7 @@ function EditEventPage() {
     const [venueCity, setVenueCity] = useState("");
     const [venueState, setVenueState] = useState("");
     const [venueZipcode, setVenueZipcode] = useState("");
-    const [onlineEventUrl, setOnlineEventUrl] = useState("");
+    let [onlineEventUrl, setOnlineEventUrl] = useState("");
 
     const [ticketPrice, setTicketPrice] = useState(currentEvent?.price);
     const [ticketsCapacity, setTicketsCapacity] = useState(currentEvent?.ticketsCapacity);
@@ -41,7 +41,7 @@ function EditEventPage() {
     const [endDate, setEndDate] = useState(currentEvent?.endDate);
     const [endTime, setEndTime] = useState(currentEvent?.endTime);
 
-    const [formSubmissionErrors, setFormSubmissionErrors] = useState([]);
+
 
 
     const dispatch = useDispatch();
@@ -51,7 +51,7 @@ function EditEventPage() {
         // console.log("render")
         dispatch(eventActions.getEvents())
         // dispatch(venueActions.getVenue())
-    }, []);
+    }, [dispatch]);
 
     // console.log(imageURL, title, organizer, gameName, gameType, categoryId, description, ticketPrice, ticketsCapacity, startDate, startTime, endDate, endTime)
 
@@ -105,10 +105,6 @@ function EditEventPage() {
 
 
         dispatch(eventActions.updateEvent(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setFormSubmissionErrors(data.errors);
-            });
 
 
         history.push(`/events`)
@@ -283,7 +279,7 @@ function EditEventPage() {
                                 <label>
                                     Choose Event Image:
                                     <div className="eventImg">
-                                        <img src={imageURL} alt="No Image found" />
+                                        <img src={imageURL} alt="NoImageFound" />
                                     </div>
                                     <select name="eventImg" value={imageURL} onChange={(e) => setImageURL(e.target.value)} >
                                         <option value="https://s3.envato.com/files/78652366/Image%20Preview.jpg">Strategy option 1</option>

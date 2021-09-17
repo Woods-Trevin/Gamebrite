@@ -82,9 +82,11 @@ const venueReducer = (state = initialState, action) => {
         case CURRENT_VENUE:
             newState = Object.assign({}, state);
             newState.venue = action.payload;
+            return newState;
         case SINGLE_VENUE:
             newState = Object.assign({}, state);
             newState.venue = action.payload;
+            return newState;
         default:
             return state;
     }

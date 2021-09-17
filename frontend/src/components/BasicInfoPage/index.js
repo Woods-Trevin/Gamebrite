@@ -1,6 +1,5 @@
 import './basicInfo.css';
-import { useEffect, useState } from 'react';
-import { useEventContext } from '../../context/event';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as eventActions from '../../store/event'
 import * as venueActions from '../../store/venue'
@@ -37,7 +36,7 @@ export default function BasicInfoPage() {
     const [venueCity, setVenueCity] = useState("");
     const [venueState, setVenueState] = useState("");
     const [venueZipcode, setVenueZipcode] = useState(0);
-    const [onlineEventUrl, setOnlineEventUrl] = useState("");
+    let [onlineEventUrl, setOnlineEventUrl] = useState("");
 
     const [ticketPrice, setTicketPrice] = useState(0);
     const [ticketsCapacity, setTicketsCapacity] = useState(0);
@@ -48,9 +47,68 @@ export default function BasicInfoPage() {
     const [endTime, setEndTime] = useState("");
 
 
-    const [validationErrors, setValidationErrors] = useState([]);
-    const [formSubmissionErrors, setFormSubmissionErrors] = useState([]);
+    const [basicInfoFormSubmissionErrors, setBasicInfoFormSubmissionErrors] = useState([]);
+    const [venueformSubmissionErrors, setVenueFormSubmissionErrors] = useState([]);
+    const [createEventErrors, setCreateEventErrors] = useState([]);
 
+    useEffect(() => {
+        const basicInfoErrors = []
+        const venueErrors = []
+        if (imageURL === null || imageURL === undefined || imageURL === '') basicInfoErrors.push('Must provide a valid image Url')
+
+        if (!title) basicInfoErrors.push('Must provide a valid Title')
+        if (title.length > 200) basicInfoErrors.push('Title must be less than 200 characters')
+
+        if (!gameName) basicInfoErrors.push('Must provide a valid Game Name')
+        if (gameName.length > 30) basicInfoErrors.push('Game name should be less than 30 characters')
+
+        if (!organizer) basicInfoErrors.push('Must provide a valid image Url')
+        if (organizer.length > 50) basicInfoErrors.push('Organizer must be less than 50 characters')
+
+        if (!description) basicInfoErrors.push('Must provide a valid Description')
+        if (description.length > 1500) basicInfoErrors.push('Description must be less than 1500 characters')
+
+        if (!gameType) basicInfoErrors.push('Must provide a valid Game Type')
+        if (gameType.length > 30) basicInfoErrors.push('Game Type must be less than 30 characters')
+
+        if (!categoryId) basicInfoErrors.push('Must provide a valid Category')
+
+        if (!startDate) basicInfoErrors.push('Must provide a valid Start Date')
+
+        if (!endDate) basicInfoErrors.push('Must provide a valid End Date')
+
+
+        if (!ticketsCapacity) basicInfoErrors.push('Must provide amount of tickets available. If no tickets required enter 0')
+
+
+        if (!ticketPrice) basicInfoErrors.push('Must provide a price. If there is no price enter 0')
+
+
+        if (!startTime) basicInfoErrors.push('Must provide a valid startTime')
+
+        if (!endTime) basicInfoErrors.push('Must provide a valid End Time')
+
+        if (onlineEventUrl.length > 300) basicInfoErrors.push('Online Event Url should be less than 300 characters')
+
+        setBasicInfoFormSubmissionErrors(basicInfoErrors)
+
+        if (!venueName) venueErrors.push('Must provide a valid Name');
+        if (venueName.length > 50) venueErrors.push('Venue Name must be less than 50 characters')
+
+        if (!venueAddress) venueErrors.push('Must provide a valid Address');
+        if (venueAddress.length > 25) venueErrors.push('Venue Address must be less than 50 characters')
+
+        if (!venueCity) venueErrors.push('Must provide a valid City');
+        if (venueCity.length > 15) venueErrors.push('Venue City must be less than 50 characters')
+
+        if (!venueState) venueErrors.push('Must provide a valid State');
+        if (venueState.length > 50) venueErrors.push('Venue State must be less than 50 characters')
+
+        if (!venueZipcode || venueZipcode !== null || venueZipcode !== undefined) venueErrors.push('Must provide a valid Zipcode');
+
+        setVenueFormSubmissionErrors(venueErrors)
+
+    }, [venueZipcode, venueState, venueCity, venueAddress, venueName, title, imageURL, gameName, organizer, description, gameType, categoryId, startDate, endDate, ticketsCapacity, ticketPrice, startTime, endTime, onlineEventUrl, user, venueMade])
 
 
     function handleVenueFormSubmit(e) {
@@ -72,6 +130,9 @@ export default function BasicInfoPage() {
         renderElement = (
             <form onSubmit={handleVenueFormSubmit}>
                 <div>
+                    {venueformSubmissionErrors && venueformSubmissionErrors.map((error) =>
+                        <li key={error.id} >{error}</li>
+                    )}
                     <div>
                         <label>
                             Name:
@@ -194,7 +255,7 @@ export default function BasicInfoPage() {
         dispatch(eventActions.createEvent(payload))
             .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setFormSubmissionErrors(data.errors);
+                if (data && data.errors) setCreateEventErrors(data.errors);
             });
 
         history.push("/")
@@ -239,13 +300,19 @@ export default function BasicInfoPage() {
             <div>
                 <form onSubmit={handleBasicInfoSubmit}>
                     <div className="FormContainer">
+                        {createEventErrors && createEventErrors.map((createEventError) =>
+                            <li key={createEventError.id} >{createEventError}</li>
+                        )}
+                        {basicInfoFormSubmissionErrors && basicInfoFormSubmissionErrors.map((basicInfoFormSubmissionError) =>
+                            <li key={basicInfoFormSubmissionError.id} >{basicInfoFormSubmissionError}</li>
+                        )}
                         <div className="eventImg-container">
                             <div className="eventImg-imgdropdown">
                                 <h2> Event Image</h2>
                                 <label>
                                     Choose Event Image:
                                     <div className="eventImg">
-                                        <img src={imageURL} alt="No Image found" />
+                                        <img src={imageURL} alt="NoImagefound" />
                                     </div>
                                     <select name="eventImg" value={imageURL} onChange={(e) => setImageURL(e.target.value)} >
                                         <option value="https://s3.envato.com/files/78652366/Image%20Preview.jpg">Strategy option 1</option>

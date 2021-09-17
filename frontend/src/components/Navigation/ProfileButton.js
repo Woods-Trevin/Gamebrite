@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { useEventContext } from '../../context/event'
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
-    const { eventId } = useEventContext();
 
     const openMenu = () => {
         if (showMenu) return;

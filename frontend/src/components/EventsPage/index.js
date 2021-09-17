@@ -3,7 +3,6 @@ import './EventsPage.css';
 import * as eventActions from '../../store/event'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useEventContext } from '../../context/event'
 
 
 export default function EventsPage() {
@@ -29,7 +28,7 @@ export default function EventsPage() {
     useEffect(() => {
         // console.log("render")
         dispatch(eventActions.getEvents())
-    }, []);
+    }, [dispatch]);
 
 
     return (

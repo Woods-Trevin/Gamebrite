@@ -24,7 +24,7 @@ function SingleEventPage() {
     useEffect(() => {
         // console.log("render")
         dispatch(eventActions.getEvents())
-    }, []);
+    }, [dispatch]);
 
 
     function handleDeletionOfEvents(e) {
@@ -46,7 +46,7 @@ function SingleEventPage() {
             <h1>Single Event Page</h1>
             <div className="eventDisplay-container">
                 <div className="eventDisplay">
-                    {<img src={currentEvent?.imageURL} />}
+                    {<img src={currentEvent?.imageURL} alt="" />}
                     {<li>{currentEvent?.startDate}</li>}
                     {<li>{currentEvent?.title}</li>}
                     {<li>{currentEvent?.ticketsCapacity}</li>}
