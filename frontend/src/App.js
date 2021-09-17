@@ -29,30 +29,27 @@ function App() {
   const { eventId } = useEventContext();
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <Navigation isLoaded={isLoaded} />
-        {isLoaded && (
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-        )}
-        <BrowseEventsPage />
-      </Route>
-      <Route exact path="/signup">
-        <SignupFormPage />
-      </Route>
-      <Route path="/browse/:eventId">
-        <EventDisplayPage />
-      </Route>
-      <Route path="/event/basicInfo">
-        <Route exact path="/browse/:eventId">
+    <>
+      <Switch>
+        <Route exact path="/">
+          <Navigation isLoaded={isLoaded} />
+          {isLoaded && (
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+          )}
+          <BrowseEventsPage />
+        </Route>
+        <Route path="/signup">
+          <SignupFormPage />
+        </Route>
+        <Route path="/browse/:eventId">
           <EventDisplayPage />
         </Route>
-        <Route exact path="/event/basicInfo">
+        <Route path="/event/basicInfo">
           <BasicInfoPage />
         </Route>
-        <Route exact path="/events">
+        <Route path="/events">
           <EventsPageNavigation />
           <EventsPage />
         </Route>
@@ -60,15 +57,13 @@ function App() {
           <EventPageNavigation />
           <SingleEventPage />
         </Route>
-        <Route exact path="/event/:eventId/edit">
+        <Route path="/event/:eventId/edit">
           <EventPageNavigation />
           <EditEventPage />
-          <Route path="/event/:eventId/edit">
-            <EventPageNavigation />
-            <EditEventPage />
-          </Route>
-        </Switch>
-        );
+        </Route>
+      </Switch>
+    </>
+  );
 }
 
-        export default App;
+export default App;
