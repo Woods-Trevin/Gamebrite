@@ -25,11 +25,19 @@ module.exports = (sequelize, DataTypes) => {
     Event.belongsTo(models.User, { foreignKey: "hostId" });
 
     const columnMapping = {
+      through: "Ticket",
+      otherKey: "userId",
+      foreignKey: "eventId"
+    }
+
+    Event.belongsToMany(models.User, columnMapping)
+
+    const columnMapping2 = {
       through: "Bookmark",
       otherKey: "userId",
       foreignKey: "eventId"
     }
-    Event.belongsToMany(models.User, columnMapping);
+    // Event.belongsToMany(models.User, columnMapping2);
   };
   return Event;
 };

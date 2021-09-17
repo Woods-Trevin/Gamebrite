@@ -14,6 +14,7 @@ import SingleEventPage from "./components/SingleEventPage";
 import EditEventPage from "./components/EditEventPage";
 import BrowseEventsPage from "./components/BrowseEventsPage";
 import EventDisplayPage from "./components/EventDisplayPage";
+import BookmarksPage from "./components/BookmarksPage";
 
 
 // Retain the session user information across a refresh by loading the
@@ -61,6 +62,10 @@ function App() {
         <Route path="/event/:eventId/edit">
           <EventPageNavigation />
           <EditEventPage />
+        </Route>
+        <Route path="/bookmarks">
+          <EventPageNavigation />
+          <BookmarksPage />
         </Route>
       </Switch>
     </>
