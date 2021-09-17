@@ -9,6 +9,11 @@ import { useEventContext } from "./context/event"
 import BasicInfoPage from "./components/BasicInfoPage";
 import EventsPage from "./components/EventsPage";
 import EventsPageNavigation from "./components/EventsPageNavigation";
+import EventPageNavigation from "./components/EventPageNavigation";
+import SingleEventPage from "./components/SingleEventPage";
+import EditEventPage from "./components/EditEventPage";
+import BrowseEventsPage from "./components/BrowseEventsPage";
+import EventDisplayPage from "./components/EventDisplayPage";
 
 
 // Retain the session user information across a refresh by loading the
@@ -24,38 +29,33 @@ function App() {
   const { eventId } = useEventContext();
 
   return (
-    <>
-      <Switch>
-        <Route exact path="/">
-          <Navigation isLoaded={isLoaded} />
-          {isLoaded && (
-            <Route exact path="/signup">
-              <SignupFormPage />
-            </Route>
-          )}
-        </Route>
-        <Route exact path="/signup">
-          <SignupFormPage />
-        </Route>
-<<<<<<< master
-        <Route path="/event/basicInfo">
-=======
+    <Switch>
+      <Route exact path="/">
+        <Navigation isLoaded={isLoaded} />
+        {isLoaded && (
+          <Route exact path="/signup">
+            <SignupFormPage />
+          </Route>
+        )}
+        <BrowseEventsPage />
+      </Route>
+      <Route exact path="/signup">
+        <SignupFormPage />
+      </Route>
+      <Route path="/browse/:eventId">
+        <EventDisplayPage />
+      </Route>
+      <Route path="/event/basicInfo">
         <Route exact path="/browse/:eventId">
           <EventDisplayPage />
         </Route>
         <Route exact path="/event/basicInfo">
->>>>>>> local
           <BasicInfoPage />
         </Route>
         <Route exact path="/events">
           <EventsPageNavigation />
           <EventsPage />
         </Route>
-<<<<<<< master
-        <Route path="/event/:eventId">
-          <EventsPageNavigation />
-          <EventsPage />
-=======
         <Route exact path="/event/:eventId">
           <EventPageNavigation />
           <SingleEventPage />
@@ -63,12 +63,12 @@ function App() {
         <Route exact path="/event/:eventId/edit">
           <EventPageNavigation />
           <EditEventPage />
->>>>>>> local
-        </Route>
-      </Switch>
-
-    </>
-  );
+          <Route path="/event/:eventId/edit">
+            <EventPageNavigation />
+            <EditEventPage />
+          </Route>
+        </Switch>
+        );
 }
 
-export default App;
+        export default App;

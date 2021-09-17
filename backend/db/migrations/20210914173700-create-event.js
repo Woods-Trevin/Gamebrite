@@ -26,7 +26,7 @@ module.exports = {
       },
       description: {
         allowNull: false,
-        type: Sequelize.STRING(500)
+        type: Sequelize.STRING(1500)
       },
       gameType: {
         allowNull: false,
@@ -58,7 +58,7 @@ module.exports = {
       },
       onlineEventUrl: {
         allowNull: false,
-        type: Sequelize.STRING(75)
+        type: Sequelize.STRING(300)
       },
       categoryId: {
         allowNull: false,

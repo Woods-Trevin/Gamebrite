@@ -1,32 +1,26 @@
-import './basicInfo.css';
+import { useParams, useHistory } from "react-router-dom"
 import { useEffect, useState } from 'react';
-import { useEventContext } from '../../context/event';
 import { useDispatch, useSelector } from 'react-redux';
 import * as eventActions from '../../store/event'
 import * as venueActions from '../../store/venue'
-import { useHistory } from 'react-router';
 
 
-export default function BasicInfoPage() {
-    const user = useSelector(state => state.session);
-    const currentUser = user.user
-    const venueMade = useSelector(state => state.venue);
-    const currentVenue = venueMade.venue
-    // const event = useSelector(state => state.events);
-    // const currentEvent = event.events
-    // console.log(currentUser.id);
-    // const { venueId } = useEventContext();
-    const dispatch = useDispatch();
-    const history = useHistory();
+function EditEventPage() {
+    let { eventId } = useParams();
+    const userEvents = useSelector(state => state.events.events);
+    const ID = parseInt(eventId)
+    const currentEvent = userEvents?.find(event => event.id === ID);
+    // console.log("This is the currentEvent---->", currentEvent);
+    const venueId = currentEvent?.venueId
+    // console.log(venueId)
 
-
-    const [imageURL, setImageURL] = useState("");
-    const [title, setTitle] = useState("");
-    const [organizer, setOrganizer] = useState("");
-    const [gameName, setGameName] = useState("");
-    const [gameType, setGameType] = useState("");
-    const [categoryId, setCategoryId] = useState("");
-    const [description, setDescription] = useState("");
+    const [imageURL, setImageURL] = useState(currentEvent?.imageURL);
+    const [title, setTitle] = useState(currentEvent?.title);
+    const [organizer, setOrganizer] = useState(currentEvent?.organizer);
+    const [gameName, setGameName] = useState(currentEvent?.game);
+    const [gameType, setGameType] = useState(currentEvent?.gameType);
+    const [categoryId, setCategoryId] = useState(currentEvent?.categoryId);
+    const [description, setDescription] = useState(currentEvent?.description);
 
     const [venue, setVenue] = useState(false);
     const [onlineEvent, setOnlineEvent] = useState(false);
@@ -39,32 +33,102 @@ export default function BasicInfoPage() {
     const [venueZipcode, setVenueZipcode] = useState("");
     const [onlineEventUrl, setOnlineEventUrl] = useState("");
 
-    const [ticketPrice, setTicketPrice] = useState(0);
-    const [ticketsCapacity, setTicketsCapacity] = useState(0);
+    const [ticketPrice, setTicketPrice] = useState(currentEvent?.price);
+    const [ticketsCapacity, setTicketsCapacity] = useState(currentEvent?.ticketsCapacity);
 
-    const [startDate, setStartDate] = useState("");
-    const [startTime, setStartTime] = useState("");
-    const [endDate, setEndDate] = useState("");
-    const [endTime, setEndTime] = useState("");
+    const [startDate, setStartDate] = useState(currentEvent?.startDate);
+    const [startTime, setStartTime] = useState(currentEvent?.startTime);
+    const [endDate, setEndDate] = useState(currentEvent?.endDate);
+    const [endTime, setEndTime] = useState(currentEvent?.endTime);
 
-
-    const [validationErrors, setValidationErrors] = useState([]);
     const [formSubmissionErrors, setFormSubmissionErrors] = useState([]);
 
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        // console.log("render")
+        dispatch(eventActions.getEvents())
+        // dispatch(venueActions.getVenue())
+    }, []);
+
+    // console.log(imageURL, title, organizer, gameName, gameType, categoryId, description, ticketPrice, ticketsCapacity, startDate, startTime, endDate, endTime)
+
+
+    const handleBasicInfoSubmit = (e) => {
+        e.preventDefault();
+
+        if (onlineEventUrl === undefined || onlineEventUrl === null || onlineEventUrl === ' ') onlineEventUrl = "No Online Event Url"
+
+        const ticketsCapacityAsInt = parseInt(ticketsCapacity);
+        const priceAsInt = parseInt(ticketPrice);
+        const categoryIdAsInt = parseInt(categoryId);
+
+        const payload = {
+            ID,
+            imageURL: imageURL,
+            title,
+            game: gameName,
+            organizer,
+            description,
+            gameType,
+            startDate,
+            endDate,
+            ticketsCapacity: ticketsCapacityAsInt,
+            price: priceAsInt,
+            startTime,
+            endTime,
+            onlineEventUrl,
+            categoryId: categoryIdAsInt,
+        }
+        // const formArray = [
+        //     ID,
+        //     imageURL,
+        //     title,
+        //     gameName,
+        //     organizer,
+        //     description,
+        //     gameType,
+        //     startDate,
+        //     endDate,
+        //     ticketsCapacity,
+        //     priceAsInt,
+        //     startTime,
+        //     endTime,
+        //     onlineEventUrl,
+        //     categoryId,
+        // ]
+        // const payloadArr = formArray.filter(field => field !== null && field !== '')
+
+        // console.log(payloadArr)
+
+
+        dispatch(eventActions.updateEvent(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setFormSubmissionErrors(data.errors);
+            });
+
+
+        history.push(`/events`)
+
+    }
 
     function handleVenueFormSubmit(e) {
         e.preventDefault();
         const payload = {
+            venueId,
             name: venueName,
             address: venueAddress,
             city: venueCity,
             state: venueState,
             zipcode: venueZipcode
         }
-        dispatch(venueActions.createVenue(payload))
+        dispatch(venueActions.updateVenue(payload))
 
     }
+
 
     let renderElement;
 
@@ -161,80 +225,54 @@ export default function BasicInfoPage() {
         )
     }
 
-
-
-
-    const handleBasicInfoSubmit = (e) => {
-        e.preventDefault();
-
-        if (onlineEventUrl === undefined || onlineEventUrl === null) onlineEventUrl = "No Online Event Url"
-
-        const ticketsCapacityAsInt = parseInt(ticketsCapacity);
-        const priceAsInt = parseInt(ticketPrice);
-        const categoryIdAsInt = parseInt(categoryId);
-
-        const payload = {
-            imageURL: imageURL,
-            title,
-            game: gameName,
-            organizer,
-            description,
-            gameType,
-            startDate,
-            endDate,
-            ticketsCapacity: ticketsCapacityAsInt,
-            price: priceAsInt,
-            startTime,
-            endTime,
-            onlineEventUrl,
-            categoryId: categoryIdAsInt,
-            hostId: currentUser.id,
-            venueId: currentVenue.id,
-        }
-        dispatch(eventActions.createEvent(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setFormSubmissionErrors(data.errors);
-            });
-
-        history.push("/")
-
-    }
+    // function checkValue(item) {
+    //     if (item === '' || item === null || item === undefined) {
+    //         item = currentEvent?.item;
+    //         // console.log(item)
+    //         return item;
+    //     } else {
+    //         item = '';
+    //         // console.log(item)
+    //         return item;
+    //     }
+    // }
 
     return (
         <div>
-            {<h1>Basic Info Page</h1>}
-            <div className="location-section">
-                Location
-                <div>
-                    <span>Help people in the area discover your event and let attendees know where to show up.</span>
+            <h1>Edit Event</h1>
+            <div>
+                <div className="location-section">
+                    Location
+                    <div>
+                        <span>Help people in the area discover your event and let attendees know where to show up.</span>
+                    </div>
+                    <div className="locationSectionBtns">
+                        <button type="button" value={venue} onClick={() => {
+                            setVenue(true)
+                            setOnlineEvent(false)
+                            setTBA(false)
+                        }}>
+                            Venue
+                        </button>
+                        <button type="button" value={onlineEvent} onClick={() => {
+                            setVenue(false)
+                            setOnlineEvent(true)
+                            setTBA(false)
+                        }}>
+                            Online Event
+                        </button>
+                        <button type="button" value={TBA} onClick={() => {
+                            setVenue(false)
+                            setOnlineEvent(false)
+                            setTBA(true)
+                        }}>
+                            To Be Announced
+                        </button>
+                    </div>
+                    {venue && renderElement}
+                    {onlineEvent && renderElement}
+                    {TBA && renderElement}
                 </div>
-                <div className="locationSectionBtns">
-                    <button type="button" value={venue} onClick={() => {
-                        setVenue(true)
-                        setOnlineEvent(false)
-                        setTBA(false)
-                    }}>
-                        Venue
-                    </button>
-                    <button type="button" value={onlineEvent} onClick={() => {
-                        setVenue(false)
-                        setOnlineEvent(true)
-                        setTBA(false)
-                    }}>
-                        Online Event
-                    </button>
-                    <button type="button" value={TBA} onClick={() => {
-                        setVenue(false)
-                        setOnlineEvent(false)
-                        setTBA(true)
-                    }}>
-                        To Be Announced
-                    </button>
-                </div>
-                {venue && renderElement}
-                {onlineEvent && renderElement}
-                {TBA && renderElement}
             </div>
             <div>
                 <form onSubmit={handleBasicInfoSubmit}>
@@ -319,6 +357,7 @@ export default function BasicInfoPage() {
                             </div>
                             <div>
                                 <label>
+
                                     <textarea
                                         name="description"
                                         value={description}
@@ -326,7 +365,9 @@ export default function BasicInfoPage() {
                                         cols="50"
                                         placeholder="Description"
                                         className="description"
-                                        onChange={(e) => setDescription(e.target.value)}
+                                        onChange={(e) => {
+                                            setDescription(e.target.value)
+                                        }}
                                     />
                                 </label>
                             </div>
@@ -356,8 +397,6 @@ export default function BasicInfoPage() {
                                         <option value={5}>LFG</option>
                                         <option value={6}>Raid</option>
                                         <option value={7}>TeamUp</option>
-                                        <option value={8}>Charity</option>
-                                        
                                     </select>
                                 </label>
                             </div>
@@ -416,6 +455,8 @@ export default function BasicInfoPage() {
                     </div>
                 </form >
             </div>
-        </div >
+        </div>
     )
 }
+
+export default EditEventPage;

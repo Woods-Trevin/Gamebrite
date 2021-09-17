@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Event, Venue } = require('../../db/models');
+const { Venue } = require('../../db/models');
 
 // let eventId;
 // let venueId;
@@ -15,6 +15,15 @@ const { Event, Venue } = require('../../db/models');
 const router = express.Router();
 
 router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
+    const { id } = req.body
+    const venue = await Venue.findAll({
+        where: { id }
+    })
+    res.json(venue)
+}))
+
+router.put('/', restoreUser, asyncHandler(async (req, res, next) => {
+
 }))
 
 
@@ -40,7 +49,7 @@ router.post('/', restoreUser, asyncHandler(async (req, res, next) => {
             venue
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
     }
 
 }));
