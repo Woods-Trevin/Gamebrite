@@ -41,7 +41,7 @@ function BookmarksPage() {
                 {bookmarkedEvents?.map(event =>
                     <div>
                         <div>
-                            <img src={event.imageURL} alt="" />
+                            <img src={event.imageURL} alt="no picture" />
                         </div>
                     </div>
                 )}
