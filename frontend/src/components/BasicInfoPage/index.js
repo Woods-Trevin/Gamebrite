@@ -25,7 +25,7 @@ export default function BasicInfoPage() {
     const [organizer, setOrganizer] = useState("");
     const [gameName, setGameName] = useState("");
     const [gameType, setGameType] = useState("");
-    const [categoryId, setCategoryId] = useState("");
+    const [categoryId, setCategoryId] = useState(0);
     const [description, setDescription] = useState("");
 
     const [venue, setVenue] = useState(false);
@@ -36,7 +36,7 @@ export default function BasicInfoPage() {
     const [venueAddress, setVenueAddress] = useState("");
     const [venueCity, setVenueCity] = useState("");
     const [venueState, setVenueState] = useState("");
-    const [venueZipcode, setVenueZipcode] = useState("");
+    const [venueZipcode, setVenueZipcode] = useState(0);
     const [onlineEventUrl, setOnlineEventUrl] = useState("");
 
     const [ticketPrice, setTicketPrice] = useState(0);
@@ -357,7 +357,7 @@ export default function BasicInfoPage() {
                                         <option value={6}>Raid</option>
                                         <option value={7}>TeamUp</option>
                                         <option value={8}>Charity</option>
-                                        
+
                                     </select>
                                 </label>
                             </div>
