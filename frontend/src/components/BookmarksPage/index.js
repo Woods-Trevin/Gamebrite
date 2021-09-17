@@ -31,7 +31,7 @@ function BookmarksPage() {
         dispatch(bookmarkActions.getAllBookmarks());
 
         dispatch(eventActions.getBookmarkedEvents());
-    }, [dispatch])
+    }, [userBookmarks, bookmarkedEvents]);
 
     return (
         <div>
@@ -42,6 +42,7 @@ function BookmarksPage() {
                     <div>
                         <div>
                             <img src={event.imageURL} alt="no picture" />
+                            <li>{event.title}</li>
                         </div>
                     </div>
                 )}

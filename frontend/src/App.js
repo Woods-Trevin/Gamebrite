@@ -59,11 +59,11 @@ function App() {
           <EventPageNavigation />
           <SingleEventPage />
         </Route>
-        <Route path="/event/:eventId/edit">
+        <Route exact path="/event/:eventId/edit">
           <EventPageNavigation />
           <EditEventPage />
         </Route>
-        <Route path="/bookmarks">
+        <Route exact path="/bookmarks">
           <EventPageNavigation />
           <BookmarksPage />
         </Route>
