@@ -31,7 +31,7 @@ function BookmarksPage() {
         dispatch(bookmarkActions.getAllBookmarks());
 
         dispatch(eventActions.getBookmarkedEvents());
-    }, [])
+    }, [dispatch])
 
     return (
         <div>
