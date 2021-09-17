@@ -23,7 +23,7 @@ export const getEvents = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(eventsList(data));
+        dispatch(eventsList(data.event));
     }
 };
 

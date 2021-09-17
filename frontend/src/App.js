@@ -29,24 +29,41 @@ function App() {
         <Route exact path="/">
           <Navigation isLoaded={isLoaded} />
           {isLoaded && (
-            <Route path="/signup">
+            <Route exact path="/signup">
               <SignupFormPage />
             </Route>
           )}
         </Route>
-        <Route path="/signup">
+        <Route exact path="/signup">
           <SignupFormPage />
         </Route>
+<<<<<<< master
         <Route path="/event/basicInfo">
+=======
+        <Route exact path="/browse/:eventId">
+          <EventDisplayPage />
+        </Route>
+        <Route exact path="/event/basicInfo">
+>>>>>>> local
           <BasicInfoPage />
         </Route>
-        <Route path="/events">
+        <Route exact path="/events">
           <EventsPageNavigation />
           <EventsPage />
         </Route>
+<<<<<<< master
         <Route path="/event/:eventId">
           <EventsPageNavigation />
           <EventsPage />
+=======
+        <Route exact path="/event/:eventId">
+          <EventPageNavigation />
+          <SingleEventPage />
+        </Route>
+        <Route exact path="/event/:eventId/edit">
+          <EventPageNavigation />
+          <EditEventPage />
+>>>>>>> local
         </Route>
       </Switch>
 
