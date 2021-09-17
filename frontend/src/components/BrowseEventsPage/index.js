@@ -35,7 +35,7 @@ function BrowseEventsPage() {
         )
     } else if (tournament) {
         const tournamentEvents = allEvents?.filter(event => event.categoryId === 1)
-        console.log(tournamentEvents);
+        // console.log(tournamentEvents);
         renderElement = (
             <div>
                 {tournamentEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
@@ -44,7 +44,7 @@ function BrowseEventsPage() {
 
     } else if (LAN) {
         const LANEvents = allEvents?.filter(event => event.categoryId === 2)
-        console.log(LANEvents);
+        // console.log(LANEvents);
         renderElement = (
             <div>
                 {LANEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
@@ -53,7 +53,7 @@ function BrowseEventsPage() {
 
     } else if (casual) {
         const casualEvents = allEvents?.filter(event => event.categoryId === 3)
-        console.log(casualEvents);
+        // console.log(casualEvents);
         renderElement = (
             <div>
                 {casualEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
@@ -62,7 +62,7 @@ function BrowseEventsPage() {
 
     } else if (competitive) {
         const competitiveEvents = allEvents?.filter(event => event.categoryId === 4)
-        console.log(competitiveEvents);
+        // console.log(competitiveEvents);
         renderElement = (
             <div>
                 {competitiveEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
@@ -71,7 +71,7 @@ function BrowseEventsPage() {
 
     } else if (LFG) {
         const LFGEvents = allEvents?.filter(event => event.categoryId === 5)
-        console.log(LFGEvents);
+        // console.log(LFGEvents);
         renderElement = (
             <div>
                 {LFGEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
@@ -80,7 +80,7 @@ function BrowseEventsPage() {
 
     } else if (raid) {
         const raidEvents = allEvents?.filter(event => event.categoryId === 6)
-        console.log(raidEvents);
+        // console.log(raidEvents);
         renderElement = (
             <div>
                 {raidEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
@@ -89,7 +89,7 @@ function BrowseEventsPage() {
 
     } else if (teamUp) {
         const teamUpEvents = allEvents?.filter(event => event.categoryId === 7)
-        console.log(teamUpEvents);
+        // console.log(teamUpEvents);
         renderElement = (
             <div>
                 {teamUpEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
@@ -98,7 +98,7 @@ function BrowseEventsPage() {
 
     } else if (charity) {
         const charityEvents = allEvents?.filter(event => event.categoryId === 8)
-        console.log(charityEvents);
+        // console.log(charityEvents);
         renderElement = (
             <div>
                 {charityEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
