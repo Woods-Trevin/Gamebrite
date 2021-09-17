@@ -42,7 +42,7 @@ function BrowseEventsPage() {
                         </ul>
                     </NavLink>
                     <div>
-                        <button type="button" className="" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
                     </div>
                 </div>
             )
@@ -51,136 +51,182 @@ function BrowseEventsPage() {
         const tournamentEvents = allEvents?.filter(event => event.categoryId === 1)
         // console.log(tournamentEvents);
         renderElement = (
-            <div>
-                {tournamentEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+            tournamentEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
         )
 
     } else if (LAN) {
         const LANEvents = allEvents?.filter(event => event.categoryId === 2)
         // console.log(LANEvents);
         renderElement = (
-            <div>
-                {LANEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+
+            LANEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+
         )
 
     } else if (casual) {
         const casualEvents = allEvents?.filter(event => event.categoryId === 3)
         // console.log(casualEvents);
         renderElement = (
-            <div>
-                {casualEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+
+            casualEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+
         )
 
     } else if (competitive) {
         const competitiveEvents = allEvents?.filter(event => event.categoryId === 4)
         // console.log(competitiveEvents);
         renderElement = (
-            <div>
-                {competitiveEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+
+            competitiveEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+
         )
 
     } else if (LFG) {
         const LFGEvents = allEvents?.filter(event => event.categoryId === 5)
         // console.log(LFGEvents);
         renderElement = (
-            <div>
-                {LFGEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+
+            LFGEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+
         )
 
     } else if (raid) {
         const raidEvents = allEvents?.filter(event => event.categoryId === 6)
         // console.log(raidEvents);
         renderElement = (
-            <div>
-                {raidEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+
+            raidEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+
         )
 
     } else if (teamUp) {
         const teamUpEvents = allEvents?.filter(event => event.categoryId === 7)
         // console.log(teamUpEvents);
         renderElement = (
-            <div>
-                {teamUpEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+
+            teamUpEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+
         )
 
     } else if (charity) {
         const charityEvents = allEvents?.filter(event => event.categoryId === 8)
         // console.log(charityEvents);
         renderElement = (
-            <div>
-                {charityEvents?.map(event =>
-                    <NavLink to={`/browse/${event.id}`}>
+
+            charityEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
                             <img className="eventImage" src={event.imageURL} alt="" />
                         </ul>
-                    </NavLink>)}
-            </div>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+
         )
 
     }

@@ -4,7 +4,8 @@ const GET_EVENTS = '/event/getEvents';
 const SET_EVENT = '/event/createEvent';
 const UPDATE_EVENT = '/event/updateEvent';
 const DELETED_EVENT = '/event/deletedEvent'
-const ALL_EVENTS = '/event/allEvents'
+const BOOKMARKED_EVENTS = '/event/allBookmarkedEvents'
+const ALL_EVENTS = '/event/deletedEvent'
 
 
 export const userEventsList = (events) => {
@@ -14,6 +15,12 @@ export const userEventsList = (events) => {
     }
 }
 
+export const bookmarkedEvents = (event) => {
+    return {
+        type: BOOKMARKED_EVENTS,
+        payload: event
+    }
+}
 
 
 export const setEvent = (event) => {
@@ -44,6 +51,7 @@ export const allEvents = (event) => {
     }
 }
 
+
 export const updateEvent = (body) => async (dispatch) => {
     const response = await csrfFetch("/api/events", {
         method: "PUT",
@@ -63,15 +71,16 @@ export const updateEvent = (body) => async (dispatch) => {
 }
 
 
-export const getEvents = (body) => async (dispatch) => {
+export const getEvents = () => async (dispatch) => {
     const response = await csrfFetch("/api/events", {
         method: "GET",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        // body: JSON.stringify(body)
     });
 
     if (response.ok) {
         const data = await response.json();
+        console.log(data);
         dispatch(userEventsList(data.event));
     }
 };
@@ -84,6 +93,18 @@ export const getAllEvents = () => async (dispatch) => {
         dispatch(allEvents(data));
     }
 };
+
+export const getBookmarkedEvents = () => async (dispatch) => {
+    const response = await csrfFetch("/api/events/bookmarkedEvents");
+
+    if (response.ok) {
+        const data = await response.json();
+        // console.log("These are bookmarkedEvents --->", data.bookmarkedEvents.Events);
+        dispatch(bookmarkedEvents(data.events));
+    }
+};
+
+
 
 export const deleteEvents = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/events/${id}`, {
@@ -131,6 +152,10 @@ const eventReducer = (state = initialState, action) => {
             newState.events = action.payload;
             return newState;
         case ALL_EVENTS:
+            newState = Object.assign({}, state);
+            newState.events = action.payload;
+            return newState;
+        case BOOKMARKED_EVENTS:
             newState = Object.assign({}, state);
             newState.events = action.payload;
             return newState;

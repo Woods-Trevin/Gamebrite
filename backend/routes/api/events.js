@@ -5,7 +5,9 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Event, Venue } = require('../../db/models');
+const { Event, User, Bookmark } = require('../../db/models');
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 
 const router = express.Router();
@@ -18,11 +20,10 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
         },
     })
 
-    console.log(event)
-
-
     res.json({ event });
 }))
+
+
 
 router.get('/allEvents', restoreUser, asyncHandler(async (req, res, next) => {
     const events = await Event.findAll();
@@ -32,6 +33,39 @@ router.get('/allEvents', restoreUser, asyncHandler(async (req, res, next) => {
     // console.log("(inside GET route)venue ID: ", venueId)
     res.json(events);
 }))
+
+router.get('/bookmarkedEvents', restoreUser, asyncHandler(async (req, res, next) => {
+
+    const bookmarkedEvents = await Bookmark.findAll({
+        where: {
+            userId: req.user.id
+        },
+
+    })
+
+
+    const eventsIds = []
+    bookmarkedEvents.forEach(event => eventsIds.push(event.dataValues.eventId))
+    console.log(eventsIds)
+
+    const events = await Event.findAll({
+        where: {
+            id: {
+                [Op.in]: eventsIds
+            },
+        },
+        raw: true
+    })
+    console.log(events)
+
+    // console.log(bookmarkedEvents)
+    // console.log("bookedmarked Events ----->", bookmarkedEvents[0])
+
+
+
+    res.json({ events });
+}))
+
 
 
 router.post('/', restoreUser, asyncHandler(async (req, res, next) => {

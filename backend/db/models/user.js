@@ -73,6 +73,13 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "userId"
     }
     User.belongsToMany(models.Event, columnMapping)
+
+    const columnMapping2 = {
+      through: "Bookmark",
+      otherKey: "eventId",
+      foreignKey: "userId"
+    }
+    // User.belongsToMany(models.Event, columnMapping2)
   };
 
   // Creating methods that the API routes for authentication 

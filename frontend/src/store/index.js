@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import eventReducer from './event';
 import sessionReducer from './session';
 import venueReducer from './venue';
+import bookmarkReducer from './bookmark';
 
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     events: eventReducer,
     venue: venueReducer,
+    bookmark: bookmarkReducer,
 });
 
 // Initialize an enhancer variable that will be set to different store
