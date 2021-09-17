@@ -22,7 +22,7 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
     // console.log(req.user.id)
     // console.log("(inside GET route)event ID: ", eventId)
     // console.log("(inside GET route)venue ID: ", venueId)
-    res.json(event);
+    res.json({ event });
 }))
 
 router.get('/allEvents', restoreUser, asyncHandler(async (req, res, next) => {
