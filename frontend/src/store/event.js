@@ -7,7 +7,7 @@ const DELETED_EVENT = '/event/deletedEvent'
 const ALL_EVENTS = '/event/allEvents'
 
 
-export const eventsList = (events) => {
+export const userEventsList = (events) => {
     return {
         type: GET_EVENTS,
         payload: events
@@ -63,12 +63,16 @@ export const updateEvent = (body) => async (dispatch) => {
 }
 
 
-export const getEvents = () => async (dispatch) => {
-    const response = await csrfFetch("/api/events");
+export const getEvents = (body) => async (dispatch) => {
+    const response = await csrfFetch("/api/events", {
+        method: "GET",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+    });
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(eventsList(data.event));
+        dispatch(userEventsList(data.event));
     }
 };
 

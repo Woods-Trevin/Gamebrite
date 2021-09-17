@@ -7,21 +7,20 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { Event, Venue } = require('../../db/models');
 
-// let eventId;
-// let venueId;
-// console.log("(outside routes)event ID: ", eventId)
-// console.log("(outside routes)venue ID: ", venueId)
 
 const router = express.Router();
 
 router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
-    const event = await Event.findAll({
-        hostId: req.user.id
-    });
 
-    // console.log(req.user.id)
-    // console.log("(inside GET route)event ID: ", eventId)
-    // console.log("(inside GET route)venue ID: ", venueId)
+    const event = await Event.findAll({
+        where: {
+            hostId: req.user.id
+        },
+    })
+
+    console.log(event)
+
+
     res.json({ event });
 }))
 
