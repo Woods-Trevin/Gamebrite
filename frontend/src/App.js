@@ -47,6 +47,7 @@ function App() {
           <EventDisplayPage />
         </Route>
         <Route path="/event/basicInfo">
+          <EventPageNavigation />
           <BasicInfoPage />
         </Route>
         <Route path="/events">

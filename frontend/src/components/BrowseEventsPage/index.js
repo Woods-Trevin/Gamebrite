@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './BrowseEventsPage.css';
 import * as eventActions from '../../store/event'
+import * as bookmarkActions from '../../store/bookmark'
 // import * as venueActions from '../../store/venue'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -10,6 +11,8 @@ import { NavLink } from 'react-router-dom';
 function BrowseEventsPage() {
     const dispatch = useDispatch();
     const allEvents = useSelector(state => state.events.events);
+    const user = useSelector(state => state.session.user);
+    console.log(user)
 
     // const [categoryId, setCategoryId] = useState(0);
     const [browse, setBrowse] = useState(false);
@@ -29,16 +32,35 @@ function BrowseEventsPage() {
     if (browse) {
         renderElement = (
             allEvents?.map(event =>
-                <NavLink to={`/browse/${event.id}`}>
-                    <li>{event.title}</li>
-                </NavLink>)
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
         )
     } else if (tournament) {
         const tournamentEvents = allEvents?.filter(event => event.categoryId === 1)
         // console.log(tournamentEvents);
         renderElement = (
             <div>
-                {tournamentEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {tournamentEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -47,7 +69,15 @@ function BrowseEventsPage() {
         // console.log(LANEvents);
         renderElement = (
             <div>
-                {LANEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {LANEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -56,7 +86,15 @@ function BrowseEventsPage() {
         // console.log(casualEvents);
         renderElement = (
             <div>
-                {casualEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {casualEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -65,7 +103,15 @@ function BrowseEventsPage() {
         // console.log(competitiveEvents);
         renderElement = (
             <div>
-                {competitiveEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {competitiveEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -74,7 +120,15 @@ function BrowseEventsPage() {
         // console.log(LFGEvents);
         renderElement = (
             <div>
-                {LFGEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {LFGEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -83,7 +137,15 @@ function BrowseEventsPage() {
         // console.log(raidEvents);
         renderElement = (
             <div>
-                {raidEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {raidEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -92,7 +154,15 @@ function BrowseEventsPage() {
         // console.log(teamUpEvents);
         renderElement = (
             <div>
-                {teamUpEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {teamUpEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -101,7 +171,15 @@ function BrowseEventsPage() {
         // console.log(charityEvents);
         renderElement = (
             <div>
-                {charityEvents?.map(event => <NavLink to={`/browse/${event.id}`}>{event.title}</NavLink>)}
+                {charityEvents?.map(event =>
+                    <NavLink to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>)}
             </div>
         )
 
@@ -123,8 +201,8 @@ function BrowseEventsPage() {
                 Browse Events
             </h1>
             <div>
-                <div>
-                    <li onClick={() => {
+                <div className="categoryOptions">
+                    <li className="category" onClick={() => {
                         setBrowse(true)
                         setTournament(false)
                         setLAN(false)
@@ -137,7 +215,7 @@ function BrowseEventsPage() {
                     }} >
                         Browse
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(true)
                         setLAN(false)
@@ -150,7 +228,7 @@ function BrowseEventsPage() {
                     }} >
                         Tournament
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(false)
                         setLAN(true)
@@ -163,7 +241,7 @@ function BrowseEventsPage() {
                     }} >
                         LAN
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(false)
                         setLAN(false)
@@ -176,7 +254,7 @@ function BrowseEventsPage() {
                     }} >
                         Casual
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(false)
                         setLAN(false)
@@ -189,7 +267,7 @@ function BrowseEventsPage() {
                     }} >
                         Competitive
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(false)
                         setLAN(false)
@@ -202,7 +280,7 @@ function BrowseEventsPage() {
                     }} >
                         LFG
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(false)
                         setLAN(false)
@@ -215,7 +293,7 @@ function BrowseEventsPage() {
                     }} >
                         Raid
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(false)
                         setLAN(false)
@@ -228,7 +306,7 @@ function BrowseEventsPage() {
                     }} >
                         TeamUp
                     </li>
-                    <li onClick={() => {
+                    <li className="category" onClick={() => {
                         setBrowse(false)
                         setTournament(false)
                         setLAN(false)
@@ -242,8 +320,8 @@ function BrowseEventsPage() {
                         Charity
                     </li>
                 </div>
-                <div>
-                    <div>
+                <div className="browseOptions-container">
+                    <div className="browseOptions-innerContainer">
                         {browse && renderElement}
                         {tournament && renderElement}
                         {LAN && renderElement}
