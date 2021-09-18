@@ -27,6 +27,8 @@ export default function BasicInfoPage() {
     const [categoryId, setCategoryId] = useState(0);
     const [description, setDescription] = useState("");
 
+    const [disableEventSubmission, setToDisableEventSubmission] = useState(true);
+
     const [venue, setVenue] = useState(false);
     const [onlineEvent, setOnlineEvent] = useState(false);
     const [TBA, setTBA] = useState(false);
@@ -45,6 +47,8 @@ export default function BasicInfoPage() {
     const [startTime, setStartTime] = useState("");
     const [endDate, setEndDate] = useState("");
     const [endTime, setEndTime] = useState("");
+
+    // hasValue = currentVenue
 
 
     const [basicInfoFormSubmissionErrors, setBasicInfoFormSubmissionErrors] = useState([]);
@@ -104,11 +108,21 @@ export default function BasicInfoPage() {
         if (!venueState) venueErrors.push('Must provide a valid State');
         if (venueState.length > 50) venueErrors.push('Venue State must be less than 50 characters')
 
-        if (!venueZipcode || venueZipcode !== null || venueZipcode !== undefined) venueErrors.push('Must provide a valid Zipcode');
+        if (!venueZipcode) venueErrors.push('Must provide a valid Zipcode');
 
         setVenueFormSubmissionErrors(venueErrors)
 
-    }, [venueZipcode, venueState, venueCity, venueAddress, venueName, title, imageURL, gameName, organizer, description, gameType, categoryId, startDate, endDate, ticketsCapacity, ticketPrice, startTime, endTime, onlineEventUrl, user, venueMade])
+        // if (basicInfoFormSubmissionErrors.length > 0 || venueformSubmissionErrors.length > 0) {
+        //     setToDisableEventSubmission(true)
+        // } else {
+        //     setToDisableEventSubmission(false)
+        // }
+
+
+    }, [disableEventSubmission, venueZipcode, venueState, venueCity, venueAddress, venueName, title, imageURL, gameName, organizer, description, gameType, categoryId, startDate, endDate, ticketsCapacity, ticketPrice, startTime, endTime, onlineEventUrl, user, venueMade])
+
+
+
 
 
     function handleVenueFormSubmit(e) {
@@ -198,7 +212,7 @@ export default function BasicInfoPage() {
                             </div>
                         </label>
                     </div>
-                    <button type="submit" className="">Add Venue</button>
+                    <button type="submit" className="" disabled={venueformSubmissionErrors.length > 0}>Add Venue</button>
                 </div>
             </form>
         )
@@ -224,12 +238,14 @@ export default function BasicInfoPage() {
 
 
 
-
     const handleBasicInfoSubmit = (e) => {
         e.preventDefault();
 
         if (onlineEventUrl === undefined || onlineEventUrl === null) onlineEventUrl = "No Online Event Url"
 
+        const currentVenueId = currentVenue?.id ? currentVenue?.id : 1
+
+        // console.log(venueId)
         const ticketsCapacityAsInt = parseInt(ticketsCapacity);
         const priceAsInt = parseInt(ticketPrice);
         const categoryIdAsInt = parseInt(categoryId);
@@ -250,17 +266,33 @@ export default function BasicInfoPage() {
             onlineEventUrl,
             categoryId: categoryIdAsInt,
             hostId: currentUser.id,
-            venueId: currentVenue.id,
+            venueId: currentVenueId,
         }
+
+        console.log(imageURL,
+            title,
+            gameName,
+            organizer,
+            description,
+            gameType,
+            startDate,
+            endDate,
+            ticketsCapacityAsInt,
+            priceAsInt,
+            startTime,
+            endTime,
+            onlineEventUrl,
+            categoryIdAsInt,
+            currentUser.id,
+            currentVenueId)
         dispatch(eventActions.createEvent(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setCreateEventErrors(data.errors);
-            });
 
         history.push("/")
 
     }
+
+
+
 
     return (
         <div>
@@ -275,21 +307,32 @@ export default function BasicInfoPage() {
                         setVenue(true)
                         setOnlineEvent(false)
                         setTBA(false)
-                    }}>
+                        setToDisableEventSubmission(true)
+                    }}
+                        disabled={venue}
+                    // enable={}
+                    >
                         Venue
                     </button>
                     <button type="button" value={onlineEvent} onClick={() => {
                         setVenue(false)
                         setOnlineEvent(true)
                         setTBA(false)
-                    }}>
+                        setToDisableEventSubmission(false)
+                    }}
+                        disabled={onlineEvent}
+                    >
                         Online Event
                     </button>
                     <button type="button" value={TBA} onClick={() => {
                         setVenue(false)
                         setOnlineEvent(false)
                         setTBA(true)
-                    }}>
+                        setToDisableEventSubmission(false)
+
+                    }}
+                        disabled={TBA}
+                    >
                         To Be Announced
                     </button>
                 </div>
@@ -474,15 +517,19 @@ export default function BasicInfoPage() {
                                     </label>
                                     <label>
                                         Event End Time:
-                                        <input type="time" name="endTime" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
+                                        <input type="time" name="endTime" value={endTime} onChange={(e) => {
+                                            setEndTime(e.target.value)
+                                            setToDisableEventSubmission(false)
+                                        }} />
                                     </label>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" className="sumbit-btn">Submit</button>
+                        {/* (!(!currentVenue && onlineEvent) && TBA !== true) */}
                     </div>
+                    <button type="submit" className="sumbit-btn" disabled={disableEventSubmission && (basicInfoFormSubmissionErrors.length > 0 || venueformSubmissionErrors.length > 0)} >Submit</button>
                 </form >
-            </div>
+            </div >
         </div >
     )
 }

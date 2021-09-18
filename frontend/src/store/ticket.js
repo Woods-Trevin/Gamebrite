@@ -19,6 +19,21 @@ export const ownedTickets = (tickets) => {
 }
 
 
+export const deleteTickets = (body) => async (dispatch) => {
+    const response = await csrfFetch(`/api/ticket/`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            body: JSON.stringify(body)
+        },
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(ownedTickets(data.events));
+    }
+};
+
 export const getOwnedTickets = () => async (dispatch) => {
     const response = await csrfFetch(`/api/ticket/`);
 

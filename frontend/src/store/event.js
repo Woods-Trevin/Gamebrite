@@ -5,7 +5,7 @@ const SET_EVENT = '/event/createEvent';
 const UPDATE_EVENT = '/event/updateEvent';
 const DELETED_EVENT = '/event/deletedEvent'
 const BOOKMARKED_EVENTS = '/event/allBookmarkedEvents'
-const ALL_EVENTS = '/event/deletedEvent'
+const ALL_EVENTS = '/event/allEvents'
 
 
 export const userEventsList = (events) => {

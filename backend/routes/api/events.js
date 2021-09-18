@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Event, User, Bookmark } = require('../../db/models');
+const { Event, Bookmark } = require('../../db/models');
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
