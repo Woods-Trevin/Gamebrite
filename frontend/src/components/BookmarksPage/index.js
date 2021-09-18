@@ -31,7 +31,7 @@ function BookmarksPage() {
         dispatch(bookmarkActions.getAllBookmarks());
 
         dispatch(eventActions.getBookmarkedEvents());
-    }, [userBookmarks, bookmarkedEvents]);
+    }, [dispatch]);
 
     return (
         <div>
@@ -39,12 +39,11 @@ function BookmarksPage() {
             <h2>Your Events</h2>
             <ul>
                 {bookmarkedEvents?.map(event =>
-                    <div>
-                        <div>
-                            <img src={event.imageURL} alt="no picture" />
-                            <li>{event.title}</li>
-                        </div>
-                    </div>
+                    <NavLink key={event.id} to={`/event/${event.id}`}>
+                        <img key={event.imageURL} src={event.imageURL} alt="NoPicture" />
+                        <li key={event.title}>{event.title}</li>
+                    </NavLink>
+
                 )}
             </ul>
 
