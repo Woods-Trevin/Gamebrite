@@ -53,7 +53,7 @@ export default function BasicInfoPage() {
 
     const [basicInfoFormSubmissionErrors, setBasicInfoFormSubmissionErrors] = useState([]);
     const [venueformSubmissionErrors, setVenueFormSubmissionErrors] = useState([]);
-    const [createEventErrors, setCreateEventErrors] = useState([]);
+    // const [createEventErrors, setCreateEventErrors] = useState([]);
 
     useEffect(() => {
         const basicInfoErrors = []
@@ -343,9 +343,9 @@ export default function BasicInfoPage() {
             <div>
                 <form onSubmit={handleBasicInfoSubmit}>
                     <div className="FormContainer">
-                        {createEventErrors && createEventErrors.map((createEventError) =>
+                        {/* {createEventErrors && createEventErrors.map((createEventError) =>
                             <li key={createEventError.id} >{createEventError}</li>
-                        )}
+                        )} */}
                         {basicInfoFormSubmissionErrors && basicInfoFormSubmissionErrors.map((basicInfoFormSubmissionError) =>
                             <li key={basicInfoFormSubmissionError.id} >{basicInfoFormSubmissionError}</li>
                         )}

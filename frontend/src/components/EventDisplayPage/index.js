@@ -1,5 +1,5 @@
 import { useParams, NavLink } from "react-router-dom"
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as eventActions from '../../store/event'
 import * as ticketActions from '../../store/ticket'

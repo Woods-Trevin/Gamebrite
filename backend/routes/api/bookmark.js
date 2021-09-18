@@ -48,6 +48,32 @@ router.post('/', restoreUser, asyncHandler(async (req, res, next) => {
     })
 }));
 
+router.delete('/', restoreUser, asyncHandler(async (req, res, next) => {
+
+    const { id, userId } = req.body
+    console.log("request body ID and user Id --->", id, userId)
+    // const tikId = parseInt(payload)
+
+    console.log("id when it hits backend", id)
+
+    const bookmark = await Bookmark.findAll(
+        {
+
+            where: { eventId: id, userId: userId }
+        }
+    )
+    console.log("find bookmark ----->", bookmark)
+
+
+    const deletedBookmark = await Bookmark.destroy(
+        {
+            where: { eventId: id, userId: userId },
+        }
+    )
+    console.log("Deleted Ticket ---->", deletedBookmark)
+
+    res.json({ deletedBookmark })
+}));
 
 
 

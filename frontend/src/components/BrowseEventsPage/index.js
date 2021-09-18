@@ -13,6 +13,13 @@ function BrowseEventsPage() {
     const allEvents = useSelector(state => state.events.events);
     const user = useSelector(state => state.session.user);
     console.log(user)
+    let reload;
+    if (reload === true) {
+        window.location.reload();
+        console.log("reloading browser...")
+        reload = false
+    }
+    // {reload = true}
 
     // const [categoryId, setCategoryId] = useState(0);
     const [browse, setBrowse] = useState(false);
@@ -29,11 +36,13 @@ function BrowseEventsPage() {
     // console.log(categoryIdAsInt);
 
     let renderElement;
+    let renderBrowseElement;
     if (browse) {
         renderElement = (
             allEvents?.map(event =>
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
+                        {reload = true}
                         <ul className="renderedElement">
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
@@ -55,6 +64,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -77,6 +87,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -100,6 +111,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -123,6 +135,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -146,6 +159,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -169,6 +183,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -192,6 +207,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -215,6 +231,7 @@ function BrowseEventsPage() {
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -230,11 +247,12 @@ function BrowseEventsPage() {
         )
 
     } else {
-        renderElement = (
+        renderBrowseElement = (
             allEvents?.map(event =>
                 <div>
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+                            {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
@@ -256,7 +274,7 @@ function BrowseEventsPage() {
     useEffect(() => {
         dispatch(eventActions.getAllEvents());
 
-    }, [tournament, LAN, casual, competitive, LFG, raid, teamUp, charity, dispatch])
+    }, [reload, tournament, LAN, casual, competitive, LFG, raid, teamUp, charity, dispatch])
 
 
     return (
@@ -276,6 +294,7 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(false)
                         setCharity(false)
+                        reload = true
                     }} >
                         Browse
                     </li>
@@ -289,6 +308,7 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(false)
                         setCharity(false)
+                        reload = true
                     }} >
                         Tournament
                     </li>
@@ -302,6 +322,7 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(false)
                         setCharity(false)
+                        reload = true
                     }} >
                         LAN
                     </li>
@@ -315,6 +336,7 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(false)
                         setCharity(false)
+                        reload = true
                     }} >
                         Casual
                     </li>
@@ -328,6 +350,7 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(false)
                         setCharity(false)
+                        reload = true
                     }} >
                         Competitive
                     </li>
@@ -341,6 +364,7 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(false)
                         setCharity(false)
+                        reload = true
                     }} >
                         LFG
                     </li>
@@ -354,6 +378,7 @@ function BrowseEventsPage() {
                         setRaid(true)
                         setTeamUp(false)
                         setCharity(false)
+                        reload = true
                     }} >
                         Raid
                     </li>
@@ -367,6 +392,7 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(true)
                         setCharity(false)
+                        reload = true
                     }} >
                         TeamUp
                     </li>
@@ -380,12 +406,14 @@ function BrowseEventsPage() {
                         setRaid(false)
                         setTeamUp(false)
                         setCharity(true)
+                        reload = true
                     }} >
                         Charity
                     </li>
                 </div>
                 <div className="browseOptions-container">
                     <div className="browseOptions-innerContainer">
+                        {reload = true}
                         {browse && renderElement}
                         {tournament && renderElement}
                         {LAN && renderElement}
@@ -395,6 +423,7 @@ function BrowseEventsPage() {
                         {raid && renderElement}
                         {teamUp && renderElement}
                         {charity && renderElement}
+                        {renderBrowseElement}
                     </div>
                 </div>
             </div>

@@ -5,18 +5,26 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
+
 function Navigation({ isLoaded }) {
     const [search, setSearch] = useState("")
     const sessionUser = useSelector(state => state.session.user);
+    let [reload, setReload] = useState(false);
+    if (reload) {
+        window.location.reload();
+        reload = false
+    }
+    // {reload = true}
 
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
             <>
+                {reload = true}
                 <div className="userNavlinks">
                     <NavLink to="/event/basicInfo"> Create Event </NavLink>
                     <NavLink to="/bookmarks"> Bookmarks </NavLink>
-                    <NavLink to="/tickets"> Tickets </NavLink>
+                    <NavLink to="/tickets" onClick={() => setReload(true)}> Tickets </NavLink>
                 </div>
                 <ProfileButton className="profilebtn" user={sessionUser} />
             </>
@@ -24,6 +32,7 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
+                {reload = true}
                 <LoginFormModal />
                 <NavLink className="signupbtn" to="/signup">Sign Up</NavLink>
             </>
@@ -34,6 +43,7 @@ function Navigation({ isLoaded }) {
         <div className="browsepage-container">
             <div className="nav-container">
                 <li className="navlinks">
+                    {reload = true}
                     <NavLink className="Home" exact to="/">Gamebrite</NavLink>
                     <label className="nav-search">
                         <input

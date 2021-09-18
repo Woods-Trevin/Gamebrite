@@ -1,7 +1,8 @@
 import { csrfFetch } from './csrf';
 
 const CREATE_TICKET = '/event/createTicket';
-const OWNED_TICKETS = '/event/createTicket';
+const OWNED_TICKETS = '/event/ownedTicket';
+const DELETE_TICKETS = '/event/deleteTicket';
 
 
 export const createTicket = (ticket) => {
@@ -18,19 +19,30 @@ export const ownedTickets = (tickets) => {
     }
 }
 
+export const deletedTicket = (ticket) => {
+    return {
+        type: DELETE_TICKETS,
+        payload: ticket
+    }
+}
 
-export const deleteTickets = (body) => async (dispatch) => {
+
+export const deleteTickets = (payload) => async (dispatch) => {
+    // const { id } = payload.id;
+    console.log("ID when it hits store", payload.id);
+    console.log("payload going to backend", payload);
+
     const response = await csrfFetch(`/api/ticket/`, {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json",
-            body: JSON.stringify(body)
         },
+        body: JSON.stringify(payload)/*{ id: payload.id }*/
     });
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(ownedTickets(data.events));
+        dispatch(deletedTicket(data.deletedTicket));
     }
 };
 
@@ -69,6 +81,10 @@ const ticketReducer = (state = initialState, action) => {
             newState.ticket = action.payload;
             return newState;
         case OWNED_TICKETS:
+            newState = Object.assign({}, state);
+            newState.ticket = action.payload;
+            return newState;
+        case DELETE_TICKETS:
             newState = Object.assign({}, state);
             newState.ticket = action.payload;
             return newState;

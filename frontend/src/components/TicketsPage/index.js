@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"
-import { useEffect, useState } from 'react';
+// import { NavLink } from "react-router-dom"
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import * as eventActions from '../../store/event'
 import * as ticketActions from '../../store/ticket'
@@ -10,8 +10,13 @@ import * as eventActions from '../../store/event'
 function TicketsPage() {
     const tickets = useSelector(state => state.tickets.ticket);
     console.log(tickets);
-    const [reload, setReload] = useState();
-
+    const user = useSelector(state => state.session.user);
+    console.log(user);
+    let reload;
+    if (reload) {
+        window.location.reload();
+        reload = false
+    }
 
     // if (reload) {
     //     window.location.reload();
@@ -32,20 +37,20 @@ function TicketsPage() {
     // }
 
 
+
+    // let count = null;
     console.log("render above html return")
 
     useEffect(() => {
         console.log("render in use effect")
         dispatch(ticketActions.getOwnedTickets())
         dispatch(eventActions.getAllEvents())
-        setReload(true)
 
-        // setTimeout(() => {
-        //     window.location.reload(false);
-        // }, 1000000000000);
-        // console.log('page reload')
 
-    }, [dispatch]);
+    }, [dispatch, reload]);
+
+
+    // setReload(true)
     return (
         <div>
             {/* {refreshPage()} */}
@@ -54,11 +59,14 @@ function TicketsPage() {
                 <div>
                     {tickets?.map(ticket =>
                         <div>
-
                             <div>
+                                {reload = true}
                                 <img key={ticket?.imageURL} src={ticket?.imageURL} alt="noPicture" />
                             </div>
-                            <p key={ticket} className="ticket-DeleteBtn" onClick={() => { }} >Delete</p>
+                            <li key={ticket} className="ticket-DeleteBtn" onClick={() => {
+                                dispatch(ticketActions.deleteTickets({ id: ticket?.id, userId: user.id }))
+                                window.location.reload();
+                            }} >Delete</li>
                         </div>
                     )}
                 </div>

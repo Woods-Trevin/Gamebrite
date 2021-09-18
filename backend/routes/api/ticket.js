@@ -31,7 +31,7 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
 
     const eventsIds = []
     ticketedEvents.forEach(ticket => eventsIds.push(ticket.dataValues.eventId))
-    console.log(eventsIds)
+    // console.log(eventsIds)
 
     const events = await Event.findAll({
         where: {
@@ -41,7 +41,7 @@ router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
         },
         raw: true
     })
-    console.log(events)
+    // console.log(events)
 
     // console.log(bookmarkedEvents)
     // console.log("bookedmarked Events ----->", bookmarkedEvents[0])
@@ -77,8 +77,33 @@ router.put('/', restoreUser, asyncHandler(async (req, res, next) => {
 
 }));
 
-router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
+router.delete('/', restoreUser, asyncHandler(async (req, res, next) => {
+    // const { id } = req.params.id
 
+
+    const { id, userId } = req.body
+    console.log("request body ID and user Id --->", id, userId)
+    // const tikId = parseInt(payload)
+
+    console.log("id when it hits backend", id)
+
+    const ticket = await Ticket.findAll(
+        {
+
+            where: { eventId: id, userId: userId }
+        }
+    )
+    // console.log("find ticket ----->", ticket)
+
+
+    const deletedTicket = await Ticket.destroy(
+        {
+            where: { eventId: id, userId: userId },
+        }
+    )
+    console.log("Deleted Ticket ---->", deletedTicket)
+
+    res.json({ deletedTicket })
 }));
 
 

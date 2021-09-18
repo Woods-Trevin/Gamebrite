@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const SET_BOOKMARK = '/event/setBookmark';
 const GET_USER_BOOKMARK = '/event/getUserBookmarks';
 const BOOKMARKED_EVENTS = '/event/allBookmarkedEvents'
+const DELETED_BOOKMARK = '/event/deletedBookmark'
 
 
 
@@ -20,10 +21,17 @@ export const getBookmarks = (bookmarks) => {
     }
 }
 
-export const bookmarkedEvents = (event) => {
+export const bookmarkedEvents = (bookmarks) => {
     return {
         type: BOOKMARKED_EVENTS,
-        payload: event
+        payload: bookmarks
+    }
+}
+
+export const deletedbookmark = (bookmark) => {
+    return {
+        type: DELETED_BOOKMARK,
+        payload: bookmark
     }
 }
 
@@ -52,17 +60,23 @@ export const getAllBookmarks = () => async (dispatch) => {
     }
 };
 
-// export const deleteBookmark = (id) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/events/${id}`, {
-//         method: "DELETE",
-//         headers: { "Content-Type": "application/json" }
-//     });
+export const deleteBookmark = (payload) => async (dispatch) => {
+    console.log("ID when it hits store", payload.id);
+    console.log("payload going to backend", payload);
 
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(data);
-//     }
-// };
+    const response = await csrfFetch(`/api/bookmarks/`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)/*{ id: payload.id }*/
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deletedbookmark(data.deletedBookmark));
+    }
+};
 
 export const createBookmark = (body) => async (dispatch) => {
     const response = await csrfFetch("/api/bookmarks", {
@@ -90,6 +104,10 @@ const bookmarkReducer = (state = initialState, action) => {
             newState.bookmarks = action.payload;
             return newState;
         case GET_USER_BOOKMARK:
+            newState = Object.assign({}, state);
+            newState.bookmarks = action.payload;
+            return newState;
+        case DELETED_BOOKMARK:
             newState = Object.assign({}, state);
             newState.bookmarks = action.payload;
             return newState;

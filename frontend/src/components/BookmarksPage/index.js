@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './BookmarksPage.css';
 import * as eventActions from '../../store/event'
 import * as bookmarkActions from '../../store/bookmark'
@@ -12,6 +12,20 @@ function BookmarksPage() {
     console.log(userBookmarks)
     const bookmarkedEvents = useSelector(state => state.events.events)
     console.log("bookmarked events in store", bookmarkedEvents)
+
+    const user = useSelector(state => state.session.user)
+    console.log(user)
+
+    let [reload, setReload] = useState(false);
+
+
+    console.log("reloading browser...")
+    // console.log("never reloads...")
+    if (reload === true) {
+        window.location.reload();
+        reload = false
+    }
+    // {reload = true}
 
     // const [] = useState
     // console.log(events?.filter(event => event.includes(userBookmarks)))
@@ -31,18 +45,27 @@ function BookmarksPage() {
         dispatch(bookmarkActions.getAllBookmarks());
 
         dispatch(eventActions.getBookmarkedEvents());
-    }, [dispatch]);
-
+    }, [dispatch, reload]);
+    reload = true
     return (
         <div>
             <h1>Bookmarks Page</h1>
             <h2>Your Events</h2>
             <ul>
                 {bookmarkedEvents?.map(event =>
-                    <NavLink key={event.id} to={`/event/${event.id}`}>
-                        <img key={event.imageURL} src={event.imageURL} alt="NoPicture" />
-                        <li key={event.title}>{event.title}</li>
-                    </NavLink>
+                    <div>
+                        {reload = true}
+                        <NavLink key={event.id} to={`/browse/${event.id}`}>
+                            <img key={event.imageURL} src={event.imageURL} alt="NoPicture" />
+                            <li key={event.title}>{event.title}</li>
+                        </NavLink>
+                        <div>
+                            <li onClick={() => {
+                                dispatch(bookmarkActions.deleteBookmark({ id: event?.id, userId: user.id }))
+                                setReload(true);
+                            }}>DELETE BOOKMARK</li>
+                        </div>
+                    </div>
 
                 )}
             </ul>

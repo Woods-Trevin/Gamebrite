@@ -20,11 +20,16 @@ function SingleEventPage() {
     // console.log("This is the currentEvent---->", currentEvent);
     const dispatch = useDispatch();
     const history = useHistory();
+    let reload;
+    if (reload) {
+        window.location.reload();
+        reload = false
+    }
 
     useEffect(() => {
         // console.log("render")
         dispatch(eventActions.getEvents())
-    }, [dispatch]);
+    }, [dispatch], reload);
 
 
     function handleDeletionOfEvents(e) {
@@ -44,6 +49,7 @@ function SingleEventPage() {
     return (
         <div>
             <h1>Single Event Page</h1>
+            {reload = true}
             <div className="eventDisplay-container">
                 <div className="eventDisplay">
                     {<img src={currentEvent?.imageURL} alt="" />}
