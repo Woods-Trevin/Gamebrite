@@ -19,11 +19,18 @@ function TicketsPage() {
         <div>
             <h1> Tickets Page </h1>
             <div>
-                {tickets?.map(ticket =>
-                    <div>
-                        <img src={ticket.imageURL} alt="noPicture" />
-                    </div>
-                )}
+                <div>
+                    {tickets?.map(ticket =>
+                        <div>
+                            <div>
+                                <img src={ticket.imageURL} alt="noPicture" />
+                            </div>
+                            <p className="ticket-DeleteBtn" onClick={() => { }} >Delete</p>
+                        </div>
+                    )}
+                </div>
+                <div>
+                </div>
             </div>
         </div>
     )
