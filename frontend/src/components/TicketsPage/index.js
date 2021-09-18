@@ -8,9 +8,12 @@ import * as ticketActions from '../../store/ticket'
 function TicketsPage() {
     const tickets = useSelector(state => state.tickets.ticket);
     console.log(tickets);
-    const [ticket, setTicket] = useState();
+    const [reload, setReload] = useState();
 
 
+    // if (reload) {
+    //     window.location.reload();
+    // }
 
     const dispatch = useDispatch();
 
@@ -18,7 +21,12 @@ function TicketsPage() {
 
     useEffect(() => {
         dispatch(ticketActions.getOwnedTickets())
-    }, [dispatch])
+        if (reload) {
+            window.location.reload();
+        }
+        setReload(true)
+
+    }, [dispatch]);
     return (
         <div>
             <h1> Tickets Page </h1>
@@ -34,6 +42,7 @@ function TicketsPage() {
                     )}
                 </div>
                 <div>
+
                 </div>
             </div>
         </div>
