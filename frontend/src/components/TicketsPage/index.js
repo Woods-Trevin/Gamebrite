@@ -8,8 +8,12 @@ import * as ticketActions from '../../store/ticket'
 function TicketsPage() {
     const tickets = useSelector(state => state.tickets.ticket);
     console.log(tickets);
+    const [ticket, setTicket] = useState();
+
+
 
     const dispatch = useDispatch();
+
 
 
     useEffect(() => {
@@ -23,9 +27,9 @@ function TicketsPage() {
                     {tickets?.map(ticket =>
                         <div>
                             <div>
-                                <img src={ticket.imageURL} alt="noPicture" />
+                                <img key={ticket?.imageURL} src={ticket?.imageURL} alt="noPicture" />
                             </div>
-                            <p className="ticket-DeleteBtn" onClick={() => { }} >Delete</p>
+                            <p key={ticket} className="ticket-DeleteBtn" onClick={() => { }} >Delete</p>
                         </div>
                     )}
                 </div>
