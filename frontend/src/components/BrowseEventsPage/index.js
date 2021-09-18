@@ -229,6 +229,24 @@ function BrowseEventsPage() {
 
         )
 
+    } else {
+        renderElement = (
+            allEvents?.map(event =>
+                <div>
+                    <NavLink className="" to={`/browse/${event.id}`}>
+                        <ul className="renderedElement">
+                            <li>{event.title}</li>
+                            <li>{event.startDate}</li>
+                            <li>{event.startTime}</li>
+                            <img className="eventImage" src={event.imageURL} alt="" />
+                        </ul>
+                    </NavLink>
+                    <div>
+                        <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
+                    </div>
+                </div>
+            )
+        )
     }
 
     // const tournamentEvents = allEvents?.filter(event => event.categoryId === categoryIdAsInt)
