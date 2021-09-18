@@ -46,7 +46,7 @@ router.get('/bookmarkedEvents', restoreUser, asyncHandler(async (req, res, next)
 
     const eventsIds = []
     bookmarkedEvents.forEach(event => eventsIds.push(event.dataValues.eventId))
-    console.log(eventsIds)
+    // console.log(eventsIds)
 
     const events = await Event.findAll({
         where: {
@@ -56,7 +56,7 @@ router.get('/bookmarkedEvents', restoreUser, asyncHandler(async (req, res, next)
         },
         raw: true
     })
-    console.log(events)
+    // console.log(events)
 
     // console.log(bookmarkedEvents)
     // console.log("bookedmarked Events ----->", bookmarkedEvents[0])

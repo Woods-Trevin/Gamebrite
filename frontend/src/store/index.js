@@ -4,6 +4,7 @@ import eventReducer from './event';
 import sessionReducer from './session';
 import venueReducer from './venue';
 import bookmarkReducer from './bookmark';
+import ticketReducer from './ticket';
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     events: eventReducer,
     venue: venueReducer,
     bookmark: bookmarkReducer,
+    tickets: ticketReducer,
 });
 
 // Initialize an enhancer variable that will be set to different store

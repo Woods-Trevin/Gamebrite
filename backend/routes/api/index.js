@@ -4,6 +4,7 @@ const usersRouter = require('./users.js');
 const eventsRouter = require('./events.js');
 const venueRouter = require('./venue.js');
 const bookmarksRouter = require('./bookmark.js');
+const ticketsRouter = require('./ticket.js');
 
 // GET /api/set-token-cookie
 // const asyncHandler = require('express-async-handler');
@@ -19,6 +20,9 @@ router.use('/events', eventsRouter);
 router.use('/venue', venueRouter);
 
 router.use('/bookmarks', bookmarksRouter);
+
+router.use('/ticket', ticketsRouter);
+
 //example fetch for this route
 //fetch('/api/test', {
 //     method: "POST",

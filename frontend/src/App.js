@@ -15,6 +15,7 @@ import EditEventPage from "./components/EditEventPage";
 import BrowseEventsPage from "./components/BrowseEventsPage";
 import EventDisplayPage from "./components/EventDisplayPage";
 import BookmarksPage from "./components/BookmarksPage";
+import TicketsPage from "./components/TicketsPage";
 
 
 // Retain the session user information across a refresh by loading the
@@ -35,23 +36,24 @@ function App() {
         <Route exact path="/">
           <Navigation isLoaded={isLoaded} />
           {isLoaded && (
-            <Route path="/signup">
+            <Route exact path="/signup">
               <SignupFormPage />
             </Route>
           )}
           <BrowseEventsPage />
         </Route>
-        <Route path="/signup">
+        <Route exact path="/signup">
           <SignupFormPage />
         </Route>
-        <Route path="/browse/:eventId">
+        <Route exact path="/browse/:eventId">
+          <EventPageNavigation />
           <EventDisplayPage />
         </Route>
-        <Route path="/event/basicInfo">
+        <Route exact path="/event/basicInfo">
           <EventPageNavigation />
           <BasicInfoPage />
         </Route>
-        <Route path="/events">
+        <Route exact path="/events">
           <EventsPageNavigation />
           <EventsPage />
         </Route>
@@ -66,6 +68,10 @@ function App() {
         <Route exact path="/bookmarks">
           <EventPageNavigation />
           <BookmarksPage />
+        </Route>
+        <Route exact path="/tickets">
+          <EventPageNavigation />
+          <TicketsPage />
         </Route>
       </Switch>
     </>
