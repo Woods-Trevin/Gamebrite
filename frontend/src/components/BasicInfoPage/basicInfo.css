@@ -32,6 +32,7 @@
     /* border: 1px solid black; */
     width: 600px;
     /* border-radius: 30px; */
+    /* background-color: #ffdead; */
    
     
     /* background-color: white; */
@@ -49,7 +50,8 @@
     /* margin-right: 50px; */
     justify-content: space-between;
     /* width: 600px; */
-    background-color: white;
+   background-color: white;
+;
 }
 /* *-------------------------------------------------------------------------------------------------------*/
 .FormContainer{
