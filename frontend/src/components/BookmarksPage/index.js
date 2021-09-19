@@ -48,19 +48,20 @@ function BookmarksPage() {
     }, [dispatch, reload]);
     reload = true
     return (
-        <div>
+        <div className="bookmarks-outmost-ctnr">
             <h1>Bookmarks Page</h1>
             <h2>Your Events</h2>
-            <ul>
+            <ul className="bookmarks-outerContainer">
                 {bookmarkedEvents?.map(event =>
-                    <div>
+                    <div className="bookmarks-innerContainer">
                         {reload = true}
-                        <NavLink key={event.id} to={`/browse/${event.id}`}>
-                            <img key={event.imageURL} src={event.imageURL} alt="NoPicture" />
-                            <li key={event.title}>{event.title}</li>
+                        <NavLink className="bookmarkContent-container" key={event.id} to={`/browse/${event.id}`}>
+                            <img className="bookmark-img" key={event.imageURL} src={event.imageURL} alt="NoPicture" />
+                            <li className="bookmarkTitle" key={event.title}>{event.title}</li>
+                            <li className="bookmarkDescription" key={event.description}>{event.description}</li>
                         </NavLink>
-                        <div>
-                            <li onClick={() => {
+                        <div className="deleteBtn-container">
+                            <li className="DeleteBtn" onClick={() => {
                                 dispatch(bookmarkActions.deleteBookmark({ id: event?.id, userId: user.id }))
                                 setReload(true);
                             }}>DELETE BOOKMARK</li>

@@ -1,0 +1,115 @@
+
+.bookmarks-outmost-ctnr{
+background-color:#cfcfc4;
+}
+
+.bookmarks-outerContainer{
+    /* border: 2px solid orange; */
+    display: flex;
+    flex-direction: column;
+    
+}
+.bookmarks-outerContainer:hover{
+    /* height:300px; */
+    
+}
+
+.bookmarks-innerContainer{
+    border: 3px solid black;
+    display: flex;
+    
+    width: 100%;
+    height:300px;
+
+}
+.bookmarks-innerContainer:hover{
+    background-color: grey;
+    display: flex;
+    font-size: 30px;
+    /* box-shadow: 10px 10px 10px 10px black; */
+    
+    /* width: 100%;
+    height:500px; */
+
+}
+.bookmarks-innerContainer > *:hover{
+    background-color: grey;
+    /* display: flex; */
+    /* box-shadow: 10px 10px 10px 10px black; */
+    
+    /* width: 100%;
+    
+    height:500px; */
+    font-size:30px;
+
+}
+
+.bookmarkContent-container {
+    /* border: 2px solid yellow; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    text-decoration: none;
+    /* align-content: ;
+     */
+     color:black;
+    width: 100%;
+    height:300px;
+}
+
+.bookmark-img {
+    width: 600px;
+    height:300px;
+    float: left;
+}
+
+.bookmarkInfo {
+    /**/
+    /* text-decoration: none;
+    color: black;
+    list-style: none; */
+}
+
+.bookmarkTitle{
+    text-decoration: none;
+    /* position: absolute; */
+    /* top: 20px */
+    color: white;
+    list-style: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    /* width: 700px; */
+
+}
+
+.bookmarkDescription{
+    text-decoration: none;
+    color: black;
+    list-style: none;
+}
+
+
+.deleteBtn-container{
+    text-align: center;
+    align-content: center;
+    text-decoration: none;
+    list-style: none;
+    /* background-color: blue; */
+    border: 2px solid pink;
+    height:30px;
+
+}
+
+.DeleteBtn{
+    /* border: 2px solid black; */
+    position: absolute;
+    left: 80%;
+}
+
+.DeleteBtn:hover{
+    /* border: 2px solid black; */
+    position: absolute;
+    left: 80%;
+    width: 310px;
+    height:40px;
+    box-shadow: 3px 3px 10px 10px darkgray;
+}
