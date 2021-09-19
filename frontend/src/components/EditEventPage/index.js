@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as eventActions from '../../store/event'
 import * as venueActions from '../../store/venue'
+import "./EditEventPage.css"
 
 
 function EditEventPage() {
@@ -107,6 +108,7 @@ function EditEventPage() {
         dispatch(eventActions.updateEvent(payload))
 
 
+
         history.push(`/events`)
 
     }
@@ -122,6 +124,7 @@ function EditEventPage() {
             zipcode: venueZipcode
         }
         dispatch(venueActions.updateVenue(payload))
+        window.location.reload();
 
     }
 
@@ -130,7 +133,7 @@ function EditEventPage() {
 
     if (venue) {
         renderElement = (
-            <form onSubmit={handleVenueFormSubmit}>
+            <form className="editPage-venueFormContainer" onSubmit={handleVenueFormSubmit}>
                 <div>
                     <div>
                         <label>
@@ -234,7 +237,7 @@ function EditEventPage() {
     // }
 
     return (
-        <div>
+        <div className="outerMostContainer">
             <h1>Edit Event</h1>
             <div>
                 <div className="location-section">
@@ -247,6 +250,7 @@ function EditEventPage() {
                             setVenue(true)
                             setOnlineEvent(false)
                             setTBA(false)
+
                         }}>
                             Venue
                         </button>
@@ -254,6 +258,7 @@ function EditEventPage() {
                             setVenue(false)
                             setOnlineEvent(true)
                             setTBA(false)
+
                         }}>
                             Online Event
                         </button>
@@ -261,6 +266,7 @@ function EditEventPage() {
                             setVenue(false)
                             setOnlineEvent(false)
                             setTBA(true)
+
                         }}>
                             To Be Announced
                         </button>
@@ -270,7 +276,7 @@ function EditEventPage() {
                     {TBA && renderElement}
                 </div>
             </div>
-            <div>
+            <div className="editPage-basicInfoFormContainer">
                 <form onSubmit={handleBasicInfoSubmit}>
                     <div className="FormContainer">
                         <div className="eventImg-container">
@@ -279,7 +285,7 @@ function EditEventPage() {
                                 <label>
                                     Choose Event Image:
                                     <div className="eventImg">
-                                        <img src={imageURL} alt="NoImageFound" />
+                                        <img className="editEventImg" src={imageURL} alt="NoImageFound" />
                                     </div>
                                     <select name="eventImg" value={imageURL} onChange={(e) => setImageURL(e.target.value)} >
                                         <option value="https://s3.envato.com/files/78652366/Image%20Preview.jpg">Strategy option 1</option>
@@ -312,7 +318,7 @@ function EditEventPage() {
                         </div>
                         <div className="basicInfo-Section">
                             Basic Info
-                            <div>
+                            <div className="basicInfoTxt">
                                 <span className="basicInfoTxt">Name your event and tell event-goers why they should come.Add details that highlight what makes it unique.</span>
                             </div>
                             <div>
@@ -447,7 +453,7 @@ function EditEventPage() {
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" className="sumbit-btn">Submit</button>
+                        <button type="submit" className="sumbit-btn" disabled={false}>Submit</button>
                     </div>
                 </form >
             </div>

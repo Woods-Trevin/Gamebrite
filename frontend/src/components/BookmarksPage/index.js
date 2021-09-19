@@ -55,7 +55,7 @@ function BookmarksPage() {
                 {bookmarkedEvents?.map(event =>
                     <div className="bookmarks-innerContainer">
                         {reload = true}
-                        <NavLink className="bookmarkContent-container" key={event.id} to={`/browse/${event.id}`}>
+                        <NavLink className="bookmarkContent-container" key={event.id} to={`/event/${event.id}`}>
                             <img className="bookmark-img" key={event.imageURL} src={event.imageURL} alt="NoPicture" />
                             <li className="bookmarkTitle" key={event.title}>{event.title}</li>
                             <li className="bookmarkDescription" key={event.description}>{event.description}</li>

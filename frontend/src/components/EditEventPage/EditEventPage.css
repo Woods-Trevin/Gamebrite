@@ -1,0 +1,27 @@
+.outerMostContainer{
+    border: 2px solid red;
+    display: flex;
+}
+
+.editpage-venueFormContainer {
+    border: 2px solid green;
+    
+}
+
+.editPage-basicInfoFormContainer{
+    border: 2px solid purple;
+    
+}
+
+.editEventImg{
+    width: 780px;
+    height: 350px;
+}
+
+.basicInfoTxt-container{
+    display: flex;
+    /* border: 2px solid black; */
+    /* word-wrap: none; */
+
+    width: 750px;
+}

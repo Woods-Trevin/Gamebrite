@@ -2,6 +2,7 @@ import { useParams, useHistory, NavLink } from "react-router-dom"
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as eventActions from '../../store/event'
+import "./SingleEventPage.css"
 
 
 
@@ -47,30 +48,28 @@ function SingleEventPage() {
     // }
 
     return (
-        <div>
-            <h1>Single Event Page</h1>
+        <div className="singleEvent-Container" >
+            <img className="singleEvent-backgroundImg" src={currentEvent?.imageURL} alt="noPicture" />
             {reload = true}
             <div className="eventDisplay-container">
                 <div className="eventDisplay">
-                    {<img src={currentEvent?.imageURL} alt="" />}
-                    {<li>{currentEvent?.startDate}</li>}
-                    {<li>{currentEvent?.title}</li>}
-                    {<li>{currentEvent?.ticketsCapacity}</li>}
-                    {<li>{currentEvent?.price}</li>}
-                    {<li>{currentEvent?.description}</li>}
-                    <div>
-                        <NavLink to={`/event/${ID}/edit`}> EDIT </NavLink>
+                    {<img className="eventDisplay-image" src={currentEvent?.imageURL} alt="" />}
+                    {<li className="eventDisplay-element date">{currentEvent?.startDate}</li>}
+                    {<li className="eventDisplay-element tickets">Tickets Available: {currentEvent?.ticketsCapacity}</li>}
+                    {<li className="eventDisplay-element price">Price: ${currentEvent?.price}</li>}
+                    {<li className="eventDisplay-element title">{currentEvent?.title}</li>}
+                    {<li className="eventDisplay-element description">{currentEvent?.description}</li>}
+                    <div className="eventDisplay-editBtn">
+                        <NavLink className="EditLink" to={`/event/${ID}/edit`}> EDIT </NavLink>
                     </div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <button type="button" name="deletebutton" value={"Delete"} onClick={() => {
-                        dispatch(eventActions.deleteEvents({ id: ID }))
-                        history.push("/events");
-                        window.location.reload();
-                    }} >DELETE</button>
-                </div>
+            <div className="delete-container">
+                <li type="button" name="deletebtn" value={"Delete"} onClick={() => {
+                    dispatch(eventActions.deleteEvents({ id: ID }))
+                    history.push("/events");
+                    window.location.reload();
+                }} >DELETE</li>
             </div>
         </div>
 

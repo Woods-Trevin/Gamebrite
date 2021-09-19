@@ -173,8 +173,9 @@
 
 .eventImage{
     position: absolute;
-    width: 537px;
-    height: 400px;
+    width: 500px;
+    height: 410px;
+    left: 30px;
     /* border: 2px solid blue; */
     margin-left: 10px;
     padding-right: 5px;
