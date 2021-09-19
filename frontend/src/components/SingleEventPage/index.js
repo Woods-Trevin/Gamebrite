@@ -11,13 +11,13 @@ function SingleEventPage() {
 
 
     let { eventId } = useParams();
-    const ID = parseInt(eventId)
+    const ID = parseInt(eventId);
     // console.log("This is the eventId --->", typeof eventId);
     const userEvents = useSelector(state => state.events.events);
     // console.log(userEvents);
 
     const currentEvent = userEvents?.find(event => event.id === ID);
-    // console.log("This is the currentEvent---->", currentEvent);
+    console.log("This is the currentEvent---->", currentEvent);
     const dispatch = useDispatch();
     const history = useHistory();
     let reload;
@@ -32,13 +32,13 @@ function SingleEventPage() {
     }, [dispatch], reload);
 
 
-    function handleDeletionOfEvents(e) {
-        e.preventDefault();
+    // function handleDeletionOfEvents(e) {
+    //     e.preventDefault();
 
 
-        dispatch(eventActions.deleteEvents(ID))
-        history.push("/events")
-    }
+    //     dispatch(eventActions.deleteEvents({ id: ID }))
+    //     history.push("/events")
+    // }
 
     // function handleDeletionOfEvents(e) {
     //     e.preventDefault();
@@ -65,7 +65,11 @@ function SingleEventPage() {
             </div>
             <div>
                 <div>
-                    <button type="button" name="deletebutton" value={"Delete"} onClick={handleDeletionOfEvents} >DELETE</button>
+                    <button type="button" name="deletebutton" value={"Delete"} onClick={() => {
+                        dispatch(eventActions.deleteEvents({ id: ID }))
+                        history.push("/events");
+                        window.location.reload();
+                    }} >DELETE</button>
                 </div>
             </div>
         </div>

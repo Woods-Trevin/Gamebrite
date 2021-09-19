@@ -107,9 +107,12 @@ export const getBookmarkedEvents = () => async (dispatch) => {
 
 
 export const deleteEvents = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/events/${id}`, {
+    console.log(typeof id)
+    const ID = parseInt(id)
+    const response = await csrfFetch(`/api/events/${id.id}`, {
         method: "DELETE",
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(id)
     });
 
     if (response.ok) {

@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Event, Bookmark } = require('../../db/models');
+const { Event, Ticket, Bookmark } = require('../../db/models');
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
@@ -139,11 +139,26 @@ router.put('/', restoreUser, asyncHandler(async (req, res, next) => {
 }));
 
 router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
-    await Event.destroy(
+
+    // const { id } = req.body
+
+    await Ticket.destroy(
+        {
+            where: { eventId: req.params.id }
+        }
+    )
+
+    await Bookmark.destroy(
+        {
+            where: { eventId: req.params.id }
+        }
+    )
+    const removedEvent = await Event.destroy(
         {
             where: { id: req.params.id }
         }
     )
+    res.json(removedEvent)
 }));
 
 
