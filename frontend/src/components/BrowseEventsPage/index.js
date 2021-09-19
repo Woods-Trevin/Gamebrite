@@ -40,17 +40,21 @@ function BrowseEventsPage() {
     if (browse) {
         renderElement = (
             allEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         {reload = true}
                         <ul className="renderedElement">
+                            <div></div>
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
                         </ul>
                     </NavLink>
                     <div>
+
                         <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
                     </div>
                 </div>
@@ -61,14 +65,17 @@ function BrowseEventsPage() {
         // console.log(tournamentEvents);
         renderElement = (
             tournamentEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             {reload = true}
+                            <div></div>
                             <li>{event.title}</li>
-                            <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <li>{event.startDate}</li>
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
                         </ul>
                     </NavLink>
                     <div>
@@ -84,14 +91,17 @@ function BrowseEventsPage() {
         renderElement = (
 
             LANEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+
                             {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
                         </ul>
                     </NavLink>
                     <div>
@@ -108,14 +118,20 @@ function BrowseEventsPage() {
         renderElement = (
 
             casualEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+
                             {reload = true}
+
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
+
+
                         </ul>
                     </NavLink>
                     <div>
@@ -132,14 +148,20 @@ function BrowseEventsPage() {
         renderElement = (
 
             competitiveEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+
                             {reload = true}
+
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
+
+
                         </ul>
                     </NavLink>
                     <div>
@@ -156,14 +178,20 @@ function BrowseEventsPage() {
         renderElement = (
 
             LFGEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+
                             {reload = true}
+
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
+
+
                         </ul>
                     </NavLink>
                     <div>
@@ -180,14 +208,20 @@ function BrowseEventsPage() {
         renderElement = (
 
             raidEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+
                             {reload = true}
+
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
+
+
                         </ul>
                     </NavLink>
                     <div>
@@ -204,14 +238,20 @@ function BrowseEventsPage() {
         renderElement = (
 
             teamUpEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
+
                             {reload = true}
+
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
+
+
                         </ul>
                     </NavLink>
                     <div>
@@ -228,14 +268,17 @@ function BrowseEventsPage() {
         renderElement = (
 
             charityEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             {reload = true}
-                            <li>{event.title}</li>
-                            <li>{event.startDate}</li>
-                            <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+
+                            <li className="evntTitle">{event.title}</li>
+                            <li className="evntStartDate">{event.startDate}</li>
+                            <li className="evntStartTime">{event.startTime}</li>
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
                         </ul>
                     </NavLink>
                     <div>
@@ -249,14 +292,16 @@ function BrowseEventsPage() {
     } else {
         renderBrowseElement = (
             allEvents?.map(event =>
-                <div>
+                <div className="renderElement-container">
                     <NavLink className="" to={`/browse/${event.id}`}>
                         <ul className="renderedElement">
                             {reload = true}
                             <li>{event.title}</li>
                             <li>{event.startDate}</li>
                             <li>{event.startTime}</li>
-                            <img className="eventImage" src={event.imageURL} alt="" />
+                            <div className="eventImage-container">
+                                <img className="eventImage" src={event.imageURL} alt="" />
+                            </div>
                         </ul>
                     </NavLink>
                     <div>
@@ -266,6 +311,7 @@ function BrowseEventsPage() {
             )
         )
     }
+
 
     // const tournamentEvents = allEvents?.filter(event => event.categoryId === categoryIdAsInt)
     // console.log(tournamentEvents);
@@ -278,11 +324,11 @@ function BrowseEventsPage() {
 
 
     return (
-        <div>
+        <div >
             <h1>
-                Browse Events
+                Filter by Category:
             </h1>
-            <div>
+            <div className="filterNavbar">
                 <div className="categoryOptions">
                     <li className="category" onClick={() => {
                         setBrowse(true)

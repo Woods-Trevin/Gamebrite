@@ -1,36 +1,204 @@
-.categoryOptions > * {
+
+.categoryOptions {
     display: flex;
-    border: 2px solid black;
-    border-radius: 5px;
-    width: 110px;
-    /* height:20px; */
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* align-content: flex-start; */
+    /* position: sticky; */
+    
+}
+
+
+.categoryOptions > * {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    /* border: 2px solid black; */
+    /* border-radius: 10px; */
+    width: 100px;
+    height: 20px;
     
     
 }
 
 .category:hover {
-    background-color: grey;
-    width: 140px;
-    height: 30px;
+    /* background-color: grey; */
+    /* width: 200px;
+    height: 25px; */
+    border-bottom: 5px solid rgb(0, 0, 0);
+    color: rgba(0, 0, 0, 0.361);
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.browseOptions-container{
+    position: relative;
+    /* right: 20px; */
 }
 
 .browseOptions-innerContainer {
     display: flex;
-    flex-direction: column;
+    /* justify-content:flex-end; */
+    /* flex-direction: column; */
+    flex: 1 1 10em;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    /* flex: 0 1 100%; */
     gap: 10px;
+
+    background-color: #f2f3f4;
+    justify-content: center;
     list-style: none;
     position: relative;
     top: 50px;
+    /* width: 10px; */
+}
+
+.renderElement-container{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    border: 2px solid rgba(128, 128, 128, 0.149) ;
+    border-radius: 30px;
+    /* text-decoration: none; */
+    
+    background-color: rgba(128, 128, 128, 0.348);
+    justify-content: center;
+    height: 500px;
+    /* background-color: green; */
+    /* right: 10px; */
+}
+
+.renderElement-container > *{
+    
+    
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    
+    
 }
 
 .renderedElement{
-    border: 2px solid black;
+    /* display:flex; */
+    display : flex;
+    position:relative;
+    
+    flex-direction: column;
+    align-items: center;
+    /* box-shadow: 1px 10px 10px 10px grey; */
+    
+    /* border: 2px solid white; */
+    /* background-color: rgba(0, 0, 0, 0.17);
+    box-shadow: 10px 5px 10px blue; */
     list-style: none;
-    width: 200px;
+    color: black;
+    font-weight: bolder;
+    color: black;
+    
+    width: 500px;
+    height: 480px;
+    /* left: 5px; */
+    /* right:200px; */
     border-radius: 5px;
 }
 
+.renderedElement:hover{
+    /* display:flex; */
+    background-color: rgba(0, 0, 0, 0.204);
+    box-shadow: 4px 7px 40px 60px grey;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: x-large;
+    /* z-index: 0; */
+  
+}
+.renderedElement > * {
+    /* display:flex; */
+    /* z-index: ; */
+    text-decoration: none;
+    list-style: none;
+    color: black;
+  
+}
+
+.renderElement-container {
+    
+     
+     /* width: 20%; */
+     /* height: 90%; */
+     
+}
+
+
+
+.eventImage-outerContainer{
+    /* display:flex; */
+    display: flex;
+    position:relative;
+    
+    /* flex-direction: column-reverse; */
+    align-items: center;
+    
+    /* border: 2px solid lawngreen; */
+    /* background-color: grey; */
+    list-style: none;
+    
+    width: 500px;
+    /* height: 100%; */
+    /* left: 5px; */
+    /* right:200px; */
+    border-radius: 5px;
+
+}
+
 .eventImage{
-    width: 100%;
-    height: 100px;
+    position: absolute;
+    width: 537px;
+    height: 100%;
+    margin-left: 10px;
+    padding-right: 5px;
+    /* border: 2px solid pink; */
+}
+
+.eventImage-container{
+    display:flex;
+    justify-content: center;
+    position:relative;
+    /* border: 2px solid orange; */
+    top:20px;
+    right:21px;
+    width: 540px;
+    height: 300px;
+}
+
+.bookmarksBtn{
+    position: absolute;
+    /* border: 2px solid orange; */
+    right: 50px;
+    top: 40px;
+}
+
+.bookmarksBtn:hover{
+    position: absolute;
+    /* border: 2px solid orange; */
+    font-size: large;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    /* z-index: ; */
+}
+
+.evntTitle{
+    
+}
+.evntStartDate{
+
+}
+.evntStartTime{
+
 }

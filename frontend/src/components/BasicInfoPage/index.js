@@ -135,6 +135,7 @@ export default function BasicInfoPage() {
             zipcode: venueZipcode
         }
         dispatch(venueActions.createVenue(payload))
+        // dispatch(eventActions.getAllEvents)
 
     }
 
@@ -147,66 +148,76 @@ export default function BasicInfoPage() {
                     {venueformSubmissionErrors && venueformSubmissionErrors.map((error) =>
                         <li key={error.id} >{error}</li>
                     )}
-                    <div>
+                    <div className="input-outerContainer">
                         <label>
                             Name:
-                            <div>
+                            <div className="input-innerContainer">
                                 <input
+                                    className="input"
                                     type="text"
                                     name="venueName"
                                     value={venueName}
+                                    placeholder="Venue Name"
                                     onChange={(e) => setVenueName(e.target.value)}
                                 />
                             </div>
                         </label>
                     </div>
-                    <div>
+                    <div className="input-outerContainer">
                         <label>
                             Address:
-                            <div>
+                            <div className="input-innerContainer">
                                 <input
+                                    className="input"
                                     type="text"
                                     name="venueAddress"
                                     value={venueAddress}
+                                    placeholder="Venue Address"
                                     onChange={(e) => setVenueAddress(e.target.value)}
                                 />
                             </div>
                         </label>
                     </div>
-                    <div>
+                    <div className="input-outerContainer">
                         <label>
                             City:
-                            <div>
+                            <div className="input-innerContainer">
                                 <input
+                                    className="input"
                                     type="text"
                                     name="venueCity"
                                     value={venueCity}
+                                    placeholder="Venue City"
                                     onChange={(e) => setVenueCity(e.target.value)}
                                 />
                             </div>
                         </label>
                     </div>
-                    <div>
+                    <div className="input-outerContainer">
                         <label>
                             State:
-                            <div>
+                            <div className="input-innerContainer">
                                 <input
+                                    className="input"
                                     type="text"
                                     name="venueState"
                                     value={venueState}
+                                    placeholder="Venue State"
                                     onChange={(e) => setVenueState(e.target.value)}
                                 />
                             </div>
                         </label>
                     </div>
-                    <div>
+                    <div className="input-outerContainer">
                         <label>
                             Zipcode:
-                            <div>
+                            <div className="input-innerContainer">
                                 <input
+                                    className="input"
                                     type="text"
                                     name="venueZipcode"
                                     value={venueZipcode}
+                                    placeholder="Venue Zipcode"
                                     onChange={(e) => setVenueZipcode(e.target.value)}
                                 />
                             </div>
@@ -221,6 +232,7 @@ export default function BasicInfoPage() {
             <div>
                 Online Event Url:
                 <input
+                    className="input"
                     type="text"
                     name="onlineEventUrl"
                     value={onlineEventUrl}
@@ -295,7 +307,7 @@ export default function BasicInfoPage() {
 
 
     return (
-        <div>
+        <div className="outside-location-section">
             {<h1>Basic Info Page</h1>}
             <div className="location-section">
                 Location
@@ -340,22 +352,20 @@ export default function BasicInfoPage() {
                 {onlineEvent && renderElement}
                 {TBA && renderElement}
             </div>
-            <div>
+            <div className="outside-form-container">
                 <form onSubmit={handleBasicInfoSubmit}>
                     <div className="FormContainer">
                         {/* {createEventErrors && createEventErrors.map((createEventError) =>
                             <li key={createEventError.id} >{createEventError}</li>
                         )} */}
-                        {basicInfoFormSubmissionErrors && basicInfoFormSubmissionErrors.map((basicInfoFormSubmissionError) =>
-                            <li key={basicInfoFormSubmissionError.id} >{basicInfoFormSubmissionError}</li>
-                        )}
-                        <div className="eventImg-container">
-                            <div className="eventImg-imgdropdown">
-                                <h2> Event Image</h2>
+
+                        <div className="">
+                            <div className="">
+                                <h2 className="sectionHeader"> Event Image</h2>
                                 <label>
                                     Choose Event Image:
-                                    <div className="eventImg">
-                                        <img src={imageURL} alt="NoImagefound" />
+                                    <div >
+                                        <img className="eventImg" src={imageURL} alt="NoImagefound" />
                                     </div>
                                     <select name="eventImg" value={imageURL} onChange={(e) => setImageURL(e.target.value)} >
                                         <option value="https://s3.envato.com/files/78652366/Image%20Preview.jpg">Strategy option 1</option>
@@ -387,7 +397,10 @@ export default function BasicInfoPage() {
                             </div>
                         </div>
                         <div className="basicInfo-Section">
-                            Basic Info
+                            <h2 className="sectionHeader">Basic Info</h2>
+                            {basicInfoFormSubmissionErrors && basicInfoFormSubmissionErrors.map((basicInfoFormSubmissionError) =>
+                                <li key={basicInfoFormSubmissionError.id} >{basicInfoFormSubmissionError}</li>
+                            )}
                             <div>
                                 <span className="basicInfoTxt">Name your event and tell event-goers why they should come.Add details that highlight what makes it unique.</span>
                             </div>
@@ -473,7 +486,7 @@ export default function BasicInfoPage() {
                             </div>
                         </div>
                         <div>
-                            Tickets
+                            <h2 className="sectionHeader">Tickets</h2>
                             <div>
                                 <label>
                                     <input
@@ -494,7 +507,7 @@ export default function BasicInfoPage() {
                             </div>
                         </div>
                         <div className="datetime-section">
-                            Date and Time
+                            <h2 className="sectionHeader">Date and Time</h2>
                             <div>
                                 <span>Tell event-goers when your event starts and ends so they can make plans to attend.</span>
                             </div>
@@ -526,8 +539,8 @@ export default function BasicInfoPage() {
                             </div>
                         </div>
                         {/* (!(!currentVenue && onlineEvent) && TBA !== true) */}
+                        <button type="submit" className="sumbit-btn" disabled={disableEventSubmission && (basicInfoFormSubmissionErrors.length > 0 || venueformSubmissionErrors.length > 0)} >Submit</button>
                     </div>
-                    <button type="submit" className="sumbit-btn" disabled={disableEventSubmission && (basicInfoFormSubmissionErrors.length > 0 || venueformSubmissionErrors.length > 0)} >Submit</button>
                 </form >
             </div >
         </div >
