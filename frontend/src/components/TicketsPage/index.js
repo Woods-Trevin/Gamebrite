@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import * as eventActions from '../../store/event'
 import * as ticketActions from '../../store/ticket'
 import * as eventActions from '../../store/event'
+import "./TicketsPage.css"
 
 // window.location.reload();
 
@@ -52,16 +53,18 @@ function TicketsPage() {
 
     // setReload(true)
     return (
-        <div>
+        <div className="outmost-ticketsContainer">
             {/* {refreshPage()} */}
-            <h1> Tickets Page </h1>
-            <div>
-                <div>
+            <h1 className="PageTitle"> My Tickets </h1>
+            <div className="secondOuterLayer-ticketsContainer">
+                <div className="ticketsContainer">
                     {tickets?.map(ticket =>
-                        <div>
-                            <div>
+                        <div className="ticketsContent-outterContainer">
+                            <div className="ticketsContent-container" >
                                 {reload = true}
-                                <img key={ticket?.imageURL} src={ticket?.imageURL} alt="noPicture" />
+                                <img className="ticketImg" key={ticket?.imageURL} src={ticket?.imageURL} alt="noPicture" />
+                                <li className="ticketTitle" key={ticket?.title}>{ticket?.title}</li>
+                                <li className="ticketPrice" key={ticket?.price}>Payment Status: {ticket?.price === 0 ? "Free" : `$${ticket?.price}`}</li>
                             </div>
                             <li key={ticket} className="ticket-DeleteBtn" onClick={() => {
                                 dispatch(ticketActions.deleteTickets({ id: ticket?.id, userId: user.id }))

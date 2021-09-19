@@ -1,0 +1,118 @@
+.ticketsContent-container {
+    display:flex;
+    /* flex-direction:column; */
+    justify-content: space-between;
+    /* border: 2px solid purple; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    text-decoration: none;
+    list-style: none;
+
+    /* align-content: ;
+     */
+     /* /* color:black; */
+    width: 100%;
+    height:300px;
+}
+
+.ticketsContent-container:hover {
+    display:flex;
+    /* flex-direction:column; */
+    /* justify-content: space-between; */
+    /* border: 2px solid purple; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+    /* align-content: ;
+    */
+    /* /* color:black; */
+    width: 100%;
+    height:300px;
+    font-size: 30px;
+}
+
+.ticketsContent-outterContainer{
+    display: flex;
+    /* border: 2px solid green; */
+}
+
+.ticketsContent-outterContainer:hover{
+    /* border: 2px solid black; */
+    box-shadow: 1px 10px 10px 10px black;
+    background-color: grey;
+}
+
+.outmost-ticketsContainer{
+    display: block;
+    /* justify-content: space-between; */
+    /* border: 2px solid orange; */
+    background-color:#cfcfc4;
+   
+}
+
+.secondOuterLayer-ticketsContainer{
+    /* display: flex; */
+}
+
+.ticketsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ticketImg{
+    position: relative;
+    float: left;
+    /* border: 2px solid red; */
+    width: 400px;
+    height: 300px;
+}
+
+.ticketTitle{
+    position: relative;
+    display:flex;
+    align-items: center;
+    right: 150px;
+    font-size:30px;
+    /* border: 2px solid yellow; */
+}
+
+.ticketPrice{
+    position: relative;
+    display:flex;
+    align-items: center;
+    right: 170px;
+    font-size:30px;
+    /* border: 2px solid green; */
+
+}
+
+.ticket-DeleteBtn{
+    display:flex;
+    /* text-align: center; */
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    background-color:#f8f8ff;
+    border-radius: 20px;
+    top: 230px;
+    list-style: none;
+    width: 140px;
+    height: 60px;
+}
+
+.ticket-DeleteBtn:hover{
+    /* display:flex; */
+    /* width: 220px;
+    height: 120px; */
+    background-color: rgba(255, 0, 0, 0.61);
+    cursor: pointer;
+    /* box-shadow: 1px 10px 10px 10px rgba(255, 255, 255, 0.384); */
+}
+
+.PageTitle{
+    border-bottom: 5px solid black;
+}

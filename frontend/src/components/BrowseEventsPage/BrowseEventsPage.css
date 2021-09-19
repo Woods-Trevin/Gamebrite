@@ -1,7 +1,13 @@
 
+.filterByCategoryTxt{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
 .categoryOptions {
     display: flex;
     flex-direction: row;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     justify-content: space-evenly;
     /* align-content: flex-start; */
     /* position: sticky; */
@@ -33,7 +39,10 @@
 }
 
 .browseOptions-container{
+    display: flex;
+    /* border: 2px solid red; */
     position: relative;
+    /* justify-content: flex-start; */
     /* right: 20px; */
 }
 
@@ -41,17 +50,19 @@
     display: flex;
     /* justify-content:flex-end; */
     /* flex-direction: column; */
+    /* border: 2px solid blue; */
     flex: 1 1 10em;
     flex-wrap: wrap;
+    /* justify-content: flex-end; */
     /* justify-content: space-between; */
     /* flex: 0 1 100%; */
-    gap: 10px;
-
+    gap: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #f2f3f4;
-    justify-content: center;
+    justify-content: flex-start;
     list-style: none;
     position: relative;
-    top: 50px;
+    /* top: 50px; */
     /* width: 10px; */
 }
 
@@ -62,11 +73,13 @@
     text-decoration: none;
     list-style: none;
     color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 2px solid rgba(128, 128, 128, 0.149) ;
     border-radius: 30px;
     /* text-decoration: none; */
     
-    background-color: rgba(128, 128, 128, 0.348);
+    /* background-color: rgba(128, 128, 128, 0.348); */
+    background-color: rgba(255, 0, 0, 0.055);
     justify-content: center;
     height: 500px;
     /* background-color: green; */
@@ -99,6 +112,7 @@
     color: black;
     font-weight: bolder;
     color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
     width: 500px;
     height: 480px;
@@ -109,8 +123,9 @@
 
 .renderedElement:hover{
     /* display:flex; */
-    background-color: rgba(0, 0, 0, 0.204);
-    box-shadow: 4px 7px 40px 60px grey;
+    background-color: rgba(255, 0, 0, 0.199);
+    /* background-color: white; */
+    box-shadow: 4px 7px 40px 60px rgba(255, 0, 0, 0.199);
     border-radius: 30px;
     cursor: pointer;
     font-size: x-large;
@@ -159,9 +174,11 @@
 .eventImage{
     position: absolute;
     width: 537px;
-    height: 100%;
+    height: 400px;
+    /* border: 2px solid blue; */
     margin-left: 10px;
     padding-right: 5px;
+    border-radius: 20px;
     /* border: 2px solid pink; */
 }
 
@@ -173,7 +190,7 @@
     top:20px;
     right:21px;
     width: 540px;
-    height: 300px;
+    height: 320px;
 }
 
 .bookmarksBtn{

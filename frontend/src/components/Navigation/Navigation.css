@@ -29,6 +29,7 @@
 
 .userNavlinks > * {
     text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     font-size: larger;
     color: black;
@@ -103,8 +104,6 @@
     /* width: 100px; */
     position: relative;
     font-weight: bolder;
-    font-family:  Neue Plak,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
-    font-size: x-large;
     background-color: white;
     border: 2px solid ;
 }

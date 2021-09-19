@@ -32,22 +32,20 @@ export default function EventsPage() {
 
 
     return (
-        <div className="createEvent-container">
-            <div className="createEvent">
-                <h1>
+        <div className="myEvent-container">
+            <div className="myEvent">
+                <h1 className="myEventsTitle">
                     My Events Page
                 </h1>
-                <ul>
-                    Users Events
+                <ul className="myEvents-outter-content-container">
                     {userEvents?.map(element =>
-                        <NavLink key={element.id} to={`/event/${element.id}`}>
+                        <NavLink className="myEvents-content-container" key={element.id} to={`/event/${element.id}`}>
                             {/* {console.log(element.id)} */}
-                            <p>-----------------------------------</p>
-                            <li key={element.startDate}>{element.startDate}</li>
-                            <li key={element.title}>{element.title}</li>
-                            <li key={element.ticketsCapacity}>{element.ticketsCapacity}</li>
-                            <li key={element.price}>{element.price}</li>
-                            <img src={element.imageURL} alt="" />
+                            <li className="myEvents-content" key={element.title}>{element.title}</li>
+                            <li className="myEvents-content" key={element.startDate}>Starts: {element.startDate}</li>
+                            <li className="myEvents-content" key={element.ticketsCapacity}>Ticket Capacity: {element.ticketsCapacity}</li>
+                            <li className="myEvents-content" key={element.price}>Ticket Price: {element.price}</li>
+                            <img className="myEventsImg" src={element.imageURL} alt="" />
                         </NavLink>
 
                         // console.log(element.title);

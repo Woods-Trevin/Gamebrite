@@ -49,8 +49,8 @@ function BookmarksPage() {
     reload = true
     return (
         <div className="bookmarks-outmost-ctnr">
-            <h1>Bookmarks Page</h1>
-            <h2>Your Events</h2>
+            <h1>My Bookmarks</h1>
+            <h2 className="EventsTitle">Events</h2>
             <ul className="bookmarks-outerContainer">
                 {bookmarkedEvents?.map(event =>
                     <div className="bookmarks-innerContainer">

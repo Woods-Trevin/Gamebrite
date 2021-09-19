@@ -325,7 +325,7 @@ function BrowseEventsPage() {
 
     return (
         <div >
-            <h1>
+            <h1 className="filterByCategoryTxt">
                 Filter by Category:
             </h1>
             <div className="filterNavbar">
