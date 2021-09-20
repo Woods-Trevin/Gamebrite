@@ -2,22 +2,28 @@
 .bookmarks-outmost-ctnr{
 background-color:#cfcfc4;
 /* border: 2px solid red; */
+border: 2px solid yellow;
 min-width: 100%;
 margin: 0px;
+height: 150em;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 /* width: 100%; */
 }
 
 .bookmarks-outerContainer{
     /* border: 2px solid orange; */
     display: flex;
+    /* height: 1000px; */
     /* border: 2px solid black; */
     flex-direction: column;
     gap: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
     
 }
 .bookmarks-outerContainer:hover{
     /* height:300px; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
     
 }
@@ -25,48 +31,54 @@ margin: 0px;
 .bookmarks-innerContainer{
     /* border: 3px solid black; */
     display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 20px;
+    /* height: 1000px; */
     
     width: 100%;
     height:300px;
-
+    
 }
 .bookmarks-innerContainer:hover{
     background-color: grey;
     /* display: flex; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* font-size: 30px; */
     box-shadow: 1px 10px 10px 10px black;
     
     /* width: 100%;
     height:500px; */
-
+    
 }
 .bookmarks-innerContainer > *:hover{
     /* background-color: grey; */
     /* display: flex; */
     /* box-shadow: 10px 10px 10px 10px black; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
     /* width: 100%;
     
     height:500px; */
     /* font-size:25px; */
-
+    
 } 
 
 .bookmarkContent-container {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* border: 2px solid blue; */
     /* display: flex; */
     /* flex-direction: row; */
     text-decoration: none;
     /* align-content: ;
-     */
-     color:black;
+    */
+    color:black;
     width: 100%;
     height:300px;
 }
 
 .bookmark-img {
     width: 600px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     height:300px;
     float: left;
 }
@@ -75,6 +87,8 @@ margin: 0px;
     /**/
     /* text-decoration: none;
     color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
     list-style: none; */
 }
 

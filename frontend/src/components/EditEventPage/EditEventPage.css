@@ -1,15 +1,15 @@
 .outerMostContainer{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
 }
 
 .editpage-venueFormContainer {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     
 }
 
 .editPage-basicInfoFormContainer{
-    border: 2px solid purple;
+    border-left: 2px solid purple;
     
 }
 

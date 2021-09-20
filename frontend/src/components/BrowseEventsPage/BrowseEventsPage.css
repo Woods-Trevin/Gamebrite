@@ -1,5 +1,15 @@
+.Filter-Container{
+    display: flex;
+    flex-direction: column;
+    gap:70px;
+    /* border: 1px solid red; */
+    height: 400px;
+}
+
 
 .filterByCategoryTxt{
+    /* border: 1px solid olivedrab; */
+    /* height: 2000px; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -28,6 +38,14 @@
     
 }
 
+.category {
+    /* background-color:orangered; */
+    display: flex;
+    position: relative;
+    bottom:40px;
+    font-size:30px;
+    
+}
 .category:hover {
     /* background-color: grey; */
     /* width: 200px;

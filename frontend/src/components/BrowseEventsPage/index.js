@@ -293,7 +293,7 @@ function BrowseEventsPage() {
         renderBrowseElement = (
             allEvents?.map(event =>
                 <div className="renderElement-container">
-                    <NavLink className="" to={`/browse/${event.id}`}>
+                    <NavLink className="" to={`/browse/${event.id}`}>{/*`/browse/${event.id}`*/}
                         <ul className="renderedElement">
                             {reload = true}
                             <li>{event.title}</li>
@@ -324,7 +324,7 @@ function BrowseEventsPage() {
 
 
     return (
-        <div >
+        <div className="Filter-Container">
             <h1 className="filterByCategoryTxt">
                 Filter by Category:
             </h1>

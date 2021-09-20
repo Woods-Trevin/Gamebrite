@@ -4,6 +4,8 @@
 }
 .FooterOuterBoundries{
     display: flex;
-height: 50px;
-background-color: #D70040;
+    /* position: relative; */
+    /* top: 50px; */
+    height: 30px;
+    background-color: #D70040;
 }

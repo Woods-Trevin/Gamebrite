@@ -14,14 +14,34 @@ const router = express.Router();
 
 router.get('/', restoreUser, asyncHandler(async (req, res, next) => {
 
-    const event = await Event.findAll({
+    const events = await Event.findAll({
         where: {
             hostId: req.user.id
         },
     })
 
-    res.json({ event });
+    // const { id } = req.params.id;
+
+    // const event = await Event.findAll({
+    //     where: {
+    //         hostId: id
+    //     },
+    // })
+
+    res.json({ events });
 }))
+
+// router.get('/:id', restoreUser, asyncHandler(async (req, res, next) => {
+//     const { id } = req.params.id;
+
+//     const event = await Event.findAll({
+//         where: {
+//             hostId: id
+//         },
+//     })
+
+//     res.json({ event });
+// }))
 
 
 

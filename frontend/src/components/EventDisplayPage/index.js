@@ -39,10 +39,10 @@ function EventDisplayPage() {
 
 
     return (
-        <div>
+        <div className="outermost-container">
             <h1>
                 Event Display Page
-                <NavLink to="/">EventId:{eventId}</NavLink>
+                <li>EventId:{eventId}</li>
 
             </h1>
             <div>

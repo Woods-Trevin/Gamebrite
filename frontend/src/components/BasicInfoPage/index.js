@@ -489,6 +489,9 @@ export default function BasicInfoPage() {
                             <h2 className="sectionHeader">Tickets</h2>
                             <div>
                                 <label>
+                                    <div>
+                                        Ticket Price:
+                                    </div>
                                     <input
                                         type="number"
                                         name="ticketPrice"
@@ -498,6 +501,9 @@ export default function BasicInfoPage() {
                             </div>
                             <div>
                                 <label>
+                                    <div>
+                                        Total number of available Tickets:
+                                    </div>
                                     <input
                                         type="number"
                                         name="ticketsCapacity"

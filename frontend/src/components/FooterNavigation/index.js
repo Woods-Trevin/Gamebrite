@@ -4,11 +4,8 @@ import './FooterNavigation.css'
 function FooterNavigation() {
     return (
         <div className="FooterOuterBoundries">
-            <li>About Us</li>
-            <li>About Us</li>
-            <li>About Us</li>
-            <li>About Us</li>
-            <li>About Us</li>
+            {/* <NavLink to="/aboutme">About Me</NavLink> */}
+
         </div>
     )
 

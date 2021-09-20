@@ -3,42 +3,49 @@
     background-color: #f4f3f4;
     width: 30em;
     height: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input:hover {
     background-color: white;
     width: 30em;
     height: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .input:focus {
     background-color: white;
     width: 500px;
     height: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input-innerContainer {
     /* border: 1px solid purple; */
     height:80px;
-
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 .input-outerContainer {
     /* border: 1px solid yellow; */
     /* width: 100px; */
     height:100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .location-section {
     /* border: 1px solid black; */
     width: 600px;
     /* border-radius: 30px; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* background-color: #ffdead; */
-   
+    
     
     /* background-color: white; */
 }
 
 .location-section:hover {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* border: 1px solid black; */
     width: 30em;
     background-color: #f4f3f4;
@@ -50,8 +57,8 @@
     /* margin-right: 50px; */
     justify-content: space-between;
     /* width: 600px; */
-   background-color: white;
-;
+    background-color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 /* *-------------------------------------------------------------------------------------------------------*/
 .FormContainer{
@@ -60,12 +67,14 @@
     position: relative;
     left: 100px;
     width: 55em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .FormContainer:hover{
     /* border: 1px solid orange; */
     background-color: #f4f3f4;
     position: relative;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 /* *-------------------------------------------------------------------------------------------------------*/
 
@@ -73,15 +82,18 @@
     /* border: 1px solid white; */
     width: 800px;
     height: 350px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .eventImg-imgdropdown{
-/* 
+    /* 
     width: 350px;
     height: 350px; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 /* *-------------------------------------------------------------------------------------------------------*/
 /* Basic Info Section */
 .basicInfoTxt {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
 }
 
@@ -90,6 +102,7 @@
 }
 
 .outside-form-container {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 1px solid purple;
     /* justify-content: flex-end; */
     /* right: 1000px; */

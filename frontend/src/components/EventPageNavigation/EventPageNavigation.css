@@ -2,8 +2,7 @@
     position: relative;
     text-decoration: none;
     font-size: 40px;
-    font-family: Tahoma,Arial,sans-serif;
-    color: #D70040;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;    color: #D70040;
     /* color: #FF3131; */
     font-weight: bolder;
     right: 20px;
@@ -14,11 +13,11 @@
     /* position: relative; */
     position: absolute;
     right: 30px;
-    top: 13px;
+    top: 13px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .outterContainer{
-    display: flex;
+    display: flex;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     align-items: center;
     height:70px;
     /* background-color: #FF3131; */

@@ -6,12 +6,19 @@ const UPDATE_EVENT = '/event/updateEvent';
 const DELETED_EVENT = '/event/deletedEvent'
 const BOOKMARKED_EVENTS = '/event/allBookmarkedEvents'
 const ALL_EVENTS = '/event/allEvents'
+const GET_EVENT = '/getBrowsedEvent'
 
 
 export const userEventsList = (events) => {
     return {
         type: GET_EVENTS,
         payload: events
+    }
+}
+export const browsedEvent = (event) => {
+    return {
+        type: GET_EVENT,
+        payload: event
     }
 }
 
@@ -71,6 +78,20 @@ export const updateEvent = (body) => async (dispatch) => {
 }
 
 
+export const getSingularEvent = (id) => async (dispatch) => {
+    const response = await csrfFetch("/api/events/:id", {
+        method: "GET",
+        headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify(body)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        dispatch(browsedEvent(data.event));
+    }
+};
+
 export const getEvents = () => async (dispatch) => {
     const response = await csrfFetch("/api/events", {
         method: "GET",
@@ -81,7 +102,7 @@ export const getEvents = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         console.log(data);
-        dispatch(userEventsList(data.event));
+        dispatch(userEventsList(data.events));
     }
 };
 
@@ -159,6 +180,10 @@ const eventReducer = (state = initialState, action) => {
             newState.events = action.payload;
             return newState;
         case BOOKMARKED_EVENTS:
+            newState = Object.assign({}, state);
+            newState.events = action.payload;
+            return newState;
+        case GET_EVENT:
             newState = Object.assign({}, state);
             newState.events = action.payload;
             return newState;

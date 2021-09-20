@@ -407,6 +407,9 @@ function EditEventPage() {
                             Tickets
                             <div>
                                 <label>
+                                    <div>
+                                        Ticket Price:
+                                    </div>
                                     <input
                                         type="number"
                                         name="ticketPrice"
@@ -416,6 +419,9 @@ function EditEventPage() {
                             </div>
                             <div>
                                 <label>
+                                    <div>
+                                        Total number of available Tickets:
+                                    </div>
                                     <input
                                         type="number"
                                         name="ticketsCapacity"

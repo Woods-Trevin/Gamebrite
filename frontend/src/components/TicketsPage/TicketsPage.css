@@ -2,15 +2,16 @@
     display:flex;
     /* flex-direction:column; */
     justify-content: space-between;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* border: 2px solid purple; */
     /* display: flex; */
     /* flex-direction: row; */
     text-decoration: none;
     list-style: none;
-
+    
     /* align-content: ;
-     */
-     /* /* color:black; */
+    */
+    /* /* color:black; */
     width: 100%;
     height:300px;
 }
@@ -27,6 +28,7 @@
     cursor: pointer;
     /* align-content: ;
     */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* /* color:black; */
     width: 100%;
     height:300px;
@@ -35,30 +37,35 @@
 
 .ticketsContent-outterContainer{
     display: flex;
-    border: 2px solid green;
+    /* border: 2px solid green; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .ticketsContent-outterContainer:hover{
     /* border: 2px solid black; */
     box-shadow: 1px 10px 10px 10px black;
     background-color: grey;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .outmost-ticketsContainer{
     display: block;
     /* justify-content: space-between; */
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
     height: 1000px;
     background-color:#cfcfc4;
-   
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 .secondOuterLayer-ticketsContainer{
     /* display: flex; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .ticketsContainer{
     display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     flex-direction: column;
     gap: 30px;
 }
@@ -68,12 +75,14 @@
     float: left;
     /* border: 2px solid red; */
     width: 400px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     height: 300px;
 }
 
 .ticketTitle{
     position: relative;
     display:flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     align-items: center;
     right: 150px;
     font-size:30px;
@@ -85,13 +94,15 @@
     display:flex;
     align-items: center;
     right: 170px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:30px;
     /* border: 2px solid green; */
-
+    
 }
 
 .ticket-DeleteBtn{
     display:flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* text-align: center; */
     position: relative;
     align-items: center;
@@ -108,12 +119,15 @@
 .ticket-DeleteBtn:hover{
     /* display:flex; */
     /* width: 220px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     height: 120px; */
     background-color: rgba(255, 0, 0, 0.61);
     cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* box-shadow: 1px 10px 10px 10px rgba(255, 255, 255, 0.384); */
 }
 
 .PageTitle{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-bottom: 5px solid black;
 }
