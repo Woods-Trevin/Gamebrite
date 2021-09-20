@@ -1,8 +1,8 @@
 
 .bookmarks-outmost-ctnr{
-background-color:#cfcfc4;
+background-color:#f5f5f5;
 /* border: 2px solid red; */
-border: 2px solid yellow;
+/* border: 2px solid yellow; */
 min-width: 100%;
 margin: 0px;
 height: 150em;
@@ -98,7 +98,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* border: 2px solid black; */
     /* position: absolute; */
     /* top: 20px */
-    color: white;
+    color: black;
     list-style: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
