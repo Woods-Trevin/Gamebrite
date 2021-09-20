@@ -26,7 +26,7 @@ function Navigation({ isLoaded }) {
                     <NavLink to="/bookmarks"> Bookmarks </NavLink>
                     <NavLink to="/tickets" onClick={() => setReload(true)}> Tickets </NavLink>
                 </div>
-                <ProfileButton className="profilebtn" user={sessionUser} />
+                <ProfileButton className="profileBtn-nav" user={sessionUser} />
             </>
         );
     } else {

@@ -1,5 +1,6 @@
 .loginbtn-container {
     position: absolute;
+    /* border: 5px solid pink; */
     width: 100px;
     height: 50px;
     left: 94%;
@@ -10,9 +11,12 @@
     position: absolute;
    border-radius: 15px;
    background-color: white;
+   font-weight: bolder;
+   font-size: 22px;
    border: 2px solid white;
    width: 70px;
-   height: 43px;
+   height: 20px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    right: 50%;
    /* top: px; */
    bottom: 30%;
