@@ -43,46 +43,46 @@ function App() {
             </Route>
           )}
           <BrowseEventsPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route exact path="/signup">
           <SignupFormPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route path="/browse/:eventId">
           <EventPageNavigation />
           <EventDisplayPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route exact path="/event/basicInfo">
           <EventPageNavigation />
           <BasicInfoPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route exact path="/events">
           <EventsPageNavigation />
           <EventsPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route exact path="/event/:eventId">
           <EventPageNavigation />
           <SingleEventPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route exact path="/event/:eventId/edit">
           <EventPageNavigation />
           <EditEventPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route exact path="/bookmarks">
           <EventPageNavigation />
           <BookmarksPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
         <Route exact path="/tickets">
           <EventPageNavigation />
           <TicketsPage />
-          <FooterNavigation />
+          {/* <FooterNavigation /> */}
         </Route>
       </Switch>
     </>

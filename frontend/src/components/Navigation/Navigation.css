@@ -1,11 +1,12 @@
 .browsepage-container{
     /* position: relative; */
-    height: 550px;
+    height: 600px;
 }
 
 .navlinks {
     display: flex;
     justify-content: space-around;
+    /* height: 150px; */
     /* justify-items: center; */
 }
 
@@ -14,6 +15,7 @@
     position: absolute;
     border-radius: 15px;
     /* background-color: orange; */
+    /* align-content: center; */
     text-decoration: none;
     padding: 10px;
     top: 2px;
@@ -24,6 +26,7 @@
     position: absolute;
     justify-content: space-between;
     width: 400px;
+    /* gap: 50px; */
     top: 10px;
     left: 50%;
 }
@@ -32,7 +35,8 @@
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
-    font-size: larger;
+    font-size: 25px;
+    
     color: black;
 }
 
@@ -40,7 +44,7 @@
     position: relative;
     /* border: 2px solid black; */
     align-items: center;
-    height: 50px;
+    height: 70px;
     bottom: 10px;
     
     
@@ -85,9 +89,11 @@
     /* height: px; */
     position: relative;
     border: 2px solid white;
-    height:40px;
+    height:50px;
+    font-size: 20px;
     width: 400px;
     left: 40px;
+    padding-left: 50px;
     
 }
 
@@ -106,9 +112,9 @@
 .profileBtn{
     display: inline-block;
     position: relative;
-    right: 70px;
+    right: 100%;
     /* left: 10%; */
-    width: 170px;
+    width: 180px;
     height: 40px;
     font-size: 25px;
     padding: 0;

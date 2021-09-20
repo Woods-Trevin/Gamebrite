@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as eventActions from '../../store/event'
 import * as ticketActions from '../../store/ticket'
+import './EventDisplayPage.css'
 
 
 
@@ -40,21 +41,29 @@ function EventDisplayPage() {
 
     return (
         <div className="outermost-container">
+
+            <img className="display-backgroundImg" src={currentEvent?.imageURL} alt="noImage" />
+
             <h1>
-                Event Display Page
-                <li>EventId:{eventId}</li>
+                {/* Event Display Page
+                <li>EventId:{eventId}</li> */}
 
             </h1>
-            <div>
+            <div className="display-container">
                 <div>
-                    {currentEvent?.title}
-                    {<img src={currentEvent?.imageURL} alt="NoPicture" />}
+                    {<img className="display-image" src={currentEvent?.imageURL} alt="NoPicture" />}
+                    <div className="eventInfo-container">
+                        {/* {currentEvent?.title} */}
+                        {<li className="eventDisplay-element date">{currentEvent?.startDate}</li>}
+                        {<li className="eventDisplay-element tickets">Tickets Available: {currentEvent?.ticketsCapacity}</li>}
+                        {<li className="eventDisplay-element price">Price: ${currentEvent?.price}</li>}
+                        {<li className="eventDisplay-element title">{currentEvent?.title}</li>}
+                        {<li className="eventDisplay-element description">{currentEvent?.description}</li>}
+                    </div>
                 </div>
-                <div>
-                    <button type="button" name="registerBtn" className="registerBtn" onClick={() => { handleRegistration() }} disabled={currentEvent?.price > 0}>Join</button>
-                </div>
-                <div>
-                    <button type="button" name="ticketBtn" className="ticketBtn" onClick={() => { handlePurchase() }} disabled={currentEvent?.price < 1} >Ticket</button>
+                <div className="btns-container">
+                    <button className="registerBtn" type="button" name="registerBtn" className="registerBtn" onClick={() => { handleRegistration() }} disabled={currentEvent?.price > 0}>Join</button>
+                    <button className="ticketBtn" type="button" name="ticketBtn" className="ticketBtn" onClick={() => { handlePurchase() }} disabled={currentEvent?.price < 1} >Ticket</button>
                 </div>
             </div>
 

@@ -1,3 +1,96 @@
 .outermost-container {
+    border:3px solid red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.display-container{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    border:5px solid black;
+    background-color:white;
+    width: 900px;
+    height: 1500px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    left:23%;
+    top: 100px;
+}
+
+.display-backgroundImg{
+    position: absolute;
+    height:700px;
+    width:100%;
+    z-index: -1;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(6px);
+}
+
+.btns-container{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    top: 550px;
+    right: 0px;
+    width: 400px;
+    border-bottom: 5px solid black;
+}
+
+.registerBtn{
+    /* border: 3px solid black; */
+    border: none;
+    font-size: 20px;
+    border-left: 5px solid black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* background-color: rgba(255, 0, 0, 0.459); */
+    background-color: rgba(128, 128, 128, 0.466);
+    width: 500px;
+    height:80px;
+}
+.registerBtn:hover{
+    border: 3px solid black;
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    background-color: #D70040;
+    font-size: 40px;
     
+    
+}
+
+.ticketBtn{
+    border: none;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 500px;
+    background-color: rgba(128, 128, 128, 0.466);
+    /* color: black; */
+}
+.ticketBtn:hover{
+    border: 3px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #D70040;
+    font-size: 40px;
+    
+}
+
+.display-image{
+    width: 100%;
+    height: 550px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.eventInfo-container{
+    position: relative;
+    /* border-top: 5px solid black; */
+    top: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

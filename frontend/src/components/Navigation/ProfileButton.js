@@ -33,7 +33,7 @@ function ProfileButton({ user }) {
     return (
         <div className="profileBtn-container">
             <button onClick={openMenu} className="profileBtn">
-                {actualUser?.username}
+                {actualUser?.email}
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">

@@ -1,6 +1,7 @@
 .Filter-Container{
     display: flex;
     flex-direction: column;
+    /* background-color: red; */
     gap:70px;
     /* border: 1px solid red; */
     height: 400px;
@@ -8,9 +9,14 @@
 
 
 .filterByCategoryTxt{
-    /* border: 1px solid olivedrab; */
+    /* border: 1px solid black; */
     /* height: 2000px; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    width: 260px;
+    bottom: 15px;
+    left: 30px;
+    /* height: 70px; */
 }
 
 
@@ -27,6 +33,7 @@
 
 .categoryOptions > * {
     display:flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     color: black;
@@ -34,6 +41,7 @@
     /* border-radius: 10px; */
     width: 100px;
     height: 20px;
+    left: 30px;
     
     
 }
@@ -60,12 +68,12 @@
     display: flex;
     /* border: 2px solid red; */
     position: relative;
-    /* justify-content: flex-start; */
     /* right: 20px; */
 }
 
 .browseOptions-innerContainer {
     display: flex;
+    /* justify-content: flex-end; */
     /* justify-content:flex-end; */
     /* flex-direction: column; */
     /* border: 2px solid blue; */
@@ -74,7 +82,7 @@
     /* justify-content: flex-end; */
     /* justify-content: space-between; */
     /* flex: 0 1 100%; */
-    gap: 20px;
+    gap: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #f2f3f4;
     justify-content: flex-start;
@@ -89,6 +97,7 @@
     position: relative;
     flex-direction: column;
     text-decoration: none;
+    /* justify-content: space-between; */
     list-style: none;
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
