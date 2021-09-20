@@ -304,7 +304,7 @@ function BrowseEventsPage() {
                             </div>
                         </ul>
                     </NavLink>
-                    <div>
+                    <div className="">
                         <button type="button" className="bookmarksBtn" onClick={() => { dispatch(bookmarkActions.createBookmark({ eventId: event.id, userId: user.id })) }}>Bookmark</button>
                     </div>
                 </div>

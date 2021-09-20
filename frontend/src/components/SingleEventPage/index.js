@@ -59,9 +59,9 @@ function SingleEventPage() {
                     {<li className="eventDisplay-element price">Price: ${currentEvent?.price}</li>}
                     {<li className="eventDisplay-element title">{currentEvent?.title}</li>}
                     {<li className="eventDisplay-element description">{currentEvent?.description}</li>}
-                    <div className="eventDisplay-editBtn">
-                        <NavLink className="EditLink" to={`/event/${ID}/edit`}> EDIT </NavLink>
-                    </div>
+                </div>
+                <div className="eventDisplay-editBtn">
+                    <NavLink className="EditLink" to={`/event/${ID}/edit`}> EDIT </NavLink>
                 </div>
             </div>
             <div className="delete-container">

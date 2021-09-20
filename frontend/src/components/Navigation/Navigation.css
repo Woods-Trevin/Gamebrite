@@ -140,5 +140,14 @@
 }
 
 .browsepageImg{
+    /* position: absolute; */
     width: 100%;
+    height: 500px;
+}
+
+.browsepageImg-container{
+    position: relative;
+    /* border: 2px solid red; */
+    z-index: -1;
+    /* width: 2000px; */
 }
