@@ -5,6 +5,10 @@ function FooterNavigation() {
     return (
         <div className="FooterOuterBoundries">
             <li>About Us</li>
+            <li>About Us</li>
+            <li>About Us</li>
+            <li>About Us</li>
+            <li>About Us</li>
         </div>
     )
 

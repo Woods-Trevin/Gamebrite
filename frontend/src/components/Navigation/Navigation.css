@@ -1,5 +1,6 @@
 .browsepage-container{
-    
+    /* position: relative; */
+    height: 550px;
 }
 
 .navlinks {
@@ -51,7 +52,7 @@
     color: #D70040;
     font-family: Tahoma,Arial,sans-serif;
     font-weight: bolder;
-    font-size: x-large;
+    font-size: 40px;
     right: 7%;
     
 }
@@ -82,7 +83,11 @@
 
 .searchInput{
     /* height: px; */
+    position: relative;
     border: 2px solid white;
+    height:40px;
+    width: 400px;
+    left: 40px;
     
 }
 
@@ -101,12 +106,14 @@
 .profileBtn{
     display: inline-block;
     position: relative;
-    right: 40px;
+    right: 70px;
     /* left: 10%; */
-    width: 150px;
+    width: 170px;
     height: 40px;
     font-size: 25px;
     padding: 0;
+    color: #D70040;
+    font-family: Tahoma,Arial,sans-serif;
     /* text-decoration: none; */
     position: relative;
     font-weight: bolder;

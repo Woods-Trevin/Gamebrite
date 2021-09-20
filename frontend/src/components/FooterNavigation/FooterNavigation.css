@@ -3,6 +3,7 @@
     margin: 0px;
 }
 .FooterOuterBoundries{
+    display: flex;
 height: 50px;
 background-color: #D70040;
 }

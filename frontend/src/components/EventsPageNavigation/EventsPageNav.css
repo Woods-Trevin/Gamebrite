@@ -1,0 +1,104 @@
+.events-page-container{
+/* border: 3px solid red; */
+height: 80px;
+/* background-color: rgba(255, 0, 0, 0.603); */
+
+}
+
+.events-page-navigation{
+    display: flex;
+    /* border: 1px solid purple; */
+    /* width: 50%; */
+    position: relative;
+    justify-content: flex-start;
+    gap: 250px;
+    height:80px;
+    align-items: center;
+    /* align-items: center; */
+    /* justify-items: center; */
+}
+
+/* ================================================================= */
+
+.homeLink-container {
+    /* border: 1px solid blue; */
+}
+
+
+.eventsPageHomeLink {
+    /* border: 1px solid green; */
+    text-decoration: none;
+    color: #D70040;
+    font-family: Tahoma,Arial,sans-serif;
+    font-size: 40px;
+}
+
+/* ================================================================= */
+
+.eventsLink-container{
+    /* text-decoration: none; */
+    display: flex;
+    /* border: 1px solid blue; */
+    width: 400px;
+    height: 80px;
+    align-items: center;
+    
+    display: flex;
+    justify-content: center;
+    /* justify-content: space-evenly; */
+    font-size:40px;
+    
+}
+
+.eventsPageEventsLink{
+    text-decoration: none;
+    color: #D70040;
+    font-family: Tahoma,Arial,sans-serif;
+    height: 100%;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid #D70040; */
+    background-color: rgba(255, 0, 0, 0.603);
+
+    
+}
+.eventsPageEventsLink:hover{
+   background-color: red;
+   color: #D70040;
+   
+   
+}
+
+.eventsPageOrdersLink{
+    text-decoration: none;
+    color: #D70040;
+    font-family: Tahoma,Arial,sans-serif;
+    height: 100%;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid #D70040; */
+    background-color: rgba(255, 0, 0, 0.603);
+    
+}
+
+.eventsPageOrdersLink:hover{
+    background-color: red;
+    color: #D70040;
+
+}
+
+/* ================================================================= */
+
+
+.profilebtn-container {
+    position: absolute;
+    right: 30px;
+}
+
+.profilebtn{
+
+}

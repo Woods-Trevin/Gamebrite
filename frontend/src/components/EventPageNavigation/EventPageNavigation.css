@@ -1,0 +1,27 @@
+.GamebriteLogo{
+    position: relative;
+    text-decoration: none;
+    font-size: 40px;
+    font-family: Tahoma,Arial,sans-serif;
+    color: #D70040;
+    /* color: #FF3131; */
+    font-weight: bolder;
+    right: 20px;
+    left: 50px;
+}
+
+.profilebtnOtherEvents{
+    /* position: relative; */
+    position: absolute;
+    right: 30px;
+    top: 13px;
+}
+
+.outterContainer{
+    display: flex;
+    align-items: center;
+    height:70px;
+    /* background-color: #FF3131; */
+    /* background-color: #D70040; */
+    
+}

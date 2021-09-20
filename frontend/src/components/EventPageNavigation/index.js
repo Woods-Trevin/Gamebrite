@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import ProfileButton from '../Navigation/ProfileButton';
 import { useSelector } from 'react-redux';
+import './EventPageNavigation.css'
 
 function EventPageNavigation() {
     const sessionUser = useSelector(state => state.session.user);
@@ -12,10 +13,10 @@ function EventPageNavigation() {
     // {reload = true}
 
     return (
-        <nav>
-            <NavLink to="/">Gamebrite</NavLink>
-            <div>
-                <ProfileButton className="profilebtn" user={sessionUser}>{reload = true}</ProfileButton>
+        <nav className="outterContainer">
+            <NavLink className="GamebriteLogo" to="/">Gamebrite</NavLink>
+            <div className="profilebtnOtherEvents">
+                <ProfileButton user={sessionUser}>{reload = true}</ProfileButton>
             </div>
         </nav>
     )
