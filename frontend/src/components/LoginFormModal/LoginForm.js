@@ -31,7 +31,7 @@ function LoginForm() {
                 <div>
                     <label>
                         <div>
-                            Email
+                            Username
                         </div>
                         <input
                             className="modal-input"
