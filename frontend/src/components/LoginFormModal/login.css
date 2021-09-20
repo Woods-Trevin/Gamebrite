@@ -21,3 +21,38 @@
    /* top: px; */
    bottom: 30%;
 }
+
+.modal-content{
+    display:flex;
+    flex-direction:column;
+    /* justify-content:center; */
+    align-items:center;
+    /* border: 5px solid red; */
+    position: relative;
+    top:150px;
+    height: 200px;
+    /* height:100%; */
+}
+
+.modal-content > *{
+    
+    /* border: 3px solid orange; */
+    margin-bottom: 20px;
+    width: 300px;
+    
+}
+
+.modal-container{
+    height: 500px;
+    width: 500px;
+    background-color: #f5f5f5;
+}
+.modal-input {
+    width: 300px;
+    height: 30px;
+}
+
+.modal-login-btn{
+    position: relative;
+    height: 80px;
+}
