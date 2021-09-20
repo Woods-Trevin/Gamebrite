@@ -59,6 +59,7 @@ function Navigation({ isLoaded }) {
             </div>
             <div className="browsepageImg-container">
                 <img className="browsepageImg" src="https://eventbrite-s3.s3.amazonaws.com/marketing/homepage/Daybreaker_tablet_1067x470.jpg" alt="GamebriteImg"></img>
+                <button className="FYNE-Btn" type="button" > Find Your Next Event</button>
             </div>
         </div>
     );
